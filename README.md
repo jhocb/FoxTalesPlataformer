@@ -3,4 +3,16 @@
 
 
 # FoxTalesPlataformer
-This repository is for the Game developed by FoxTales Studios on the Conclusion Project at PUC-SP's Game Design College Major.       Using Unity version 2021.3.16f1
+
+(Write the description of the Game)
+
+# Members
+
+Gustavo Hanada
+Henrique Condini
+Jhonnatan Barbosa
+Matheus Celeste
+Pedro Toledo
+Thomas Nojiri
+
+# Links
