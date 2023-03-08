@@ -16,9 +16,14 @@ public class rigidBodyMovement : MonoBehaviour
     public bool atWallR = false;
     public bool jumpable = true;
 
+    private float drag;
+    public float dragger = 0.005f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        drag = rb.drag;
+        
     }
 
     void FixedUpdate()
@@ -32,23 +37,38 @@ public class rigidBodyMovement : MonoBehaviour
 
         //to check if the player is grounded, if he is in the air, he cant sprint
         float currentSpeed = moveSpeed;
-        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             currentSpeed = runSpeed;
         }
 
          //if the player is sliding, he can jump higher
         float jumpHeight = jumpNormal;
+
+
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded)
         {
             jumpHeight = jumpSlide;
             currentSpeed = slideSpeed;
+            drag -= dragger;
+
+            if(drag <= 0.01)
+            {
+                dragger = 0;
+            }
         }
+        else
+        {
+            drag = 1;
+            dragger = 0.005f;
+        }
+
+        
 
         //the line below considers the vertical movement, wich is disabled for now
         //Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
         Vector3 movement = new Vector3(horizontalInput, 0f, 0f) * currentSpeed * Time.deltaTime;
-        rb.MovePosition(transform.position + movement);
+        rb.MovePosition(transform.position + (movement*drag));
 
         //to check if the player is grounded, if he is, than he can jump, we need to change this for double jump in the future
         //in case we want to implement it
