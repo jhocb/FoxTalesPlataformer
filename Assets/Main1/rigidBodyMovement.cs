@@ -10,12 +10,18 @@ public class rigidBodyMovement : MonoBehaviour
     public float jumpNormal = 10f;
     public float jumpSlide = 15f;
     
+    //starting the rigidbody
     private Rigidbody rb;
+
+    //flags for the jump system
     public bool isGrounded = true;
     public bool atWallL = false;
     public bool atWallR = false;
     public bool jumpable = true;
 
+    //variables for the slow down while sliding
+    //drag is the rigidbody component drag
+    //dragger is how much you will slow down per update
     private float drag;
     public float dragger = 0.005f;
 
@@ -42,7 +48,8 @@ public class rigidBodyMovement : MonoBehaviour
             currentSpeed = runSpeed;
         }
 
-         //if the player is sliding, he can jump higher
+         //if the player is sliding, he can jump higher, gonna change the
+         //jumpheight value inside the ifs for shift and control keys
         float jumpHeight = jumpNormal;
 
 
@@ -50,8 +57,13 @@ public class rigidBodyMovement : MonoBehaviour
         {
             jumpHeight = jumpSlide;
             currentSpeed = slideSpeed;
+
+            //subtracting the drag value, gonna multiply it later
+            //which will make the value for the movement go to zero
             drag -= dragger;
 
+            //when drag hits zero, im stopping the subtraciton, if i dont
+            //the value will become negative, which will push the player to the opposite side
             if(drag <= 0.01)
             {
                 dragger = 0;

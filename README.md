@@ -8,11 +8,16 @@
 
 # Members
 
-Gustavo Hanada
-Henrique Condini
-Jhonnatan Barbosa
-Matheus Celeste
-Pedro Toledo
-Thomas Nojiri
+Gustavo Hanada 
+
+Henrique Condini 
+
+Jhonnatan Barbosa 
+
+Matheus Celeste 
+
+Pedro Toledo 
+
+Thomas Nojiri 
 
 # Links
