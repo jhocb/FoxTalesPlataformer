@@ -14,10 +14,13 @@ public class rigidBodyMovement : MonoBehaviour
     private Rigidbody rb;
 
     //flags for the jump system
-    public bool isGrounded = true;
-    public bool atWallL = false;
-    public bool atWallR = false;
-    public bool jumpable = true;
+    private bool isGrounded = true;
+    private bool atWallL = false;
+    private bool atWallR = false;
+    private bool jumpable = true;
+
+    //variable to turn the character in the direction its going
+    public float rotationSpeed;
 
     //variables for the slow down while sliding
     //drag is the rigidbody component drag
@@ -81,6 +84,7 @@ public class rigidBodyMovement : MonoBehaviour
         //Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
         Vector3 movement = new Vector3(horizontalInput, 0f, 0f) * currentSpeed * Time.deltaTime;
         rb.MovePosition(transform.position + (movement*drag));
+        movement.Normalize();
 
         //to check if the player is grounded, if he is, than he can jump, we need to change this for double jump in the future
         //in case we want to implement it
@@ -91,6 +95,13 @@ public class rigidBodyMovement : MonoBehaviour
             atWallL = false;
             atWallR = false;
             jumpable = false;
+        }
+
+        //rotates the player in the direction its going
+        if (movement != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);            
         }
 
         //base code for the jump, but in wall, it adds a force to the opposite side of the wall
@@ -112,6 +123,8 @@ public class rigidBodyMovement : MonoBehaviour
             atWallR = false;
             jumpable = false;
         }
+
+        
     }
 
     //to check if the player is grounded or at wall 
