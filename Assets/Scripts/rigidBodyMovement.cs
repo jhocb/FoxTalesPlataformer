@@ -9,15 +9,18 @@ public class rigidBodyMovement : MonoBehaviour
     public float slideSpeed = 3f;
     public float jumpNormal = 10f;
     public float jumpSlide = 15f;
+    public float wallJumpUp = 5f;
+    public float wallJumpSide = 2f;
+    
     
     //starting the rigidbody
     private Rigidbody rb;
-
+    
     //flags for the jump system
-    private bool isGrounded = true;
-    private bool atWallL = false;
-    private bool atWallR = false;
-    private bool jumpable = true;
+    public bool isGrounded = true;
+    public bool atWallL = false;
+    public bool atWallR = false;
+    public bool jumpable = true;
 
     //variable to turn the character in the direction its going
     public float rotationSpeed;
@@ -32,12 +35,10 @@ public class rigidBodyMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         drag = rb.drag;
-        
     }
 
     void FixedUpdate()
     {
-
         //starting the horizontal input
         float horizontalInput = Input.GetAxis("Horizontal");
         
@@ -54,7 +55,6 @@ public class rigidBodyMovement : MonoBehaviour
          //if the player is sliding, he can jump higher, gonna change the
          //jumpheight value inside the ifs for shift and control keys
         float jumpHeight = jumpNormal;
-
 
         if (Input.GetKey(KeyCode.LeftControl) && isGrounded)
         {
@@ -77,8 +77,6 @@ public class rigidBodyMovement : MonoBehaviour
             drag = 1;
             dragger = 0.005f;
         }
-
-        
 
         //the line below considers the vertical movement, wich is disabled for now
         //Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
@@ -107,8 +105,8 @@ public class rigidBodyMovement : MonoBehaviour
         //base code for the jump, but in wall, it adds a force to the opposite side of the wall
         if (Input.GetKeyDown(KeyCode.Space) && atWallL && jumpable)
         {
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-            rb.AddForce(Vector3.right * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight* wallJumpUp, ForceMode.Impulse);
+            rb.AddForce(Vector3.right * jumpHeight* wallJumpSide, ForceMode.Impulse);
             isGrounded = false;
             atWallL = false;
             jumpable = false;
@@ -117,14 +115,12 @@ public class rigidBodyMovement : MonoBehaviour
         //base code for the jump, but in wall, it adds a force to the opposite side of the wall
         if (Input.GetKeyDown(KeyCode.Space) && atWallR && jumpable)
         {
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
-            rb.AddForce(Vector3.left * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight* wallJumpUp, ForceMode.Impulse);
+            rb.AddForce(Vector3.left * jumpHeight* wallJumpSide, ForceMode.Impulse);
             isGrounded = false;
             atWallR = false;
             jumpable = false;
         }
-
-        
     }
 
     //to check if the player is grounded or at wall 

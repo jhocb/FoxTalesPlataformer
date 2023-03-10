@@ -6,6 +6,8 @@ public class animationControlScript : MonoBehaviour
 {
 
     Animator animator;
+    public rigidBodyMovement rbM;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class animationControlScript : MonoBehaviour
             animator.SetBool("isRunning", false);
         }
 
-        if (Input.GetKey(KeyCode.Space)){
+        if (Input.GetKey(KeyCode.Space) && (Input.GetKey(KeyCode.LeftShift) || ((Input.GetKey("d") || Input.GetKey("a"))))){
 
             animator.SetBool("isJumping", true);
         }
@@ -44,6 +46,34 @@ public class animationControlScript : MonoBehaviour
         if (!Input.GetKey(KeyCode.Space)){
 
             animator.SetBool("isJumping", false);
+        }
+
+        if (Input.GetKey(KeyCode.Space)){
+            animator.SetBool("idleJumping", true);
+        }
+
+        if (!Input.GetKey(KeyCode.Space)){
+            animator.SetBool("idleJumping", false);
+        }
+
+        //check if player is in the air
+        if(rbM.isGrounded == true)
+        {
+            animator.SetBool("isGroundeded", true);
+        }
+        if(rbM.isGrounded == false)
+        {
+            animator.SetBool("isGroundeded", false);
+        }
+
+        if(rbM.atWallL || rbM.atWallR){
+            
+            animator.SetBool("atWall", true);
+        }
+
+        if(!rbM.atWallL && !rbM.atWallR){
+            
+            animator.SetBool("atWall", false);
         }
 
 
