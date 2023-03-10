@@ -76,6 +76,14 @@ public class animationControlScript : MonoBehaviour
             animator.SetBool("atWall", false);
         }
 
+         if (Input.GetKey(KeyCode.LeftControl) && (Input.GetKey("d") || Input.GetKey("a"))){
+
+            animator.SetBool("isSliding", true);
+        }
+
+        if (!Input.GetKey(KeyCode.LeftControl)){
+
+            animator.SetBool("isSliding", false);}
 
     }
 }

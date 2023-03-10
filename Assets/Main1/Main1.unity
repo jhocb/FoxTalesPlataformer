@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2155.9414, g: 2259.1948, b: 3279.719, a: 1}
+  m_IndirectSpecularColor: {r: 2156.788, g: 2259.4993, b: 3279.4849, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3115,7 +3115,7 @@ GameObject:
   - component: {fileID: 1082648177}
   m_Layer: 0
   m_Name: wall
-  m_TagString: Wall
+  m_TagString: Wall(L)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4316,7 +4316,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290486209}
-  m_LocalRotation: {x: 0.07866112, y: -0.000000017504146, z: 0.0000000013811755, w: 0.99690145}
+  m_LocalRotation: {x: 0.07866114, y: -0.000000018037307, z: 0.0000000014232452, w: 0.99690145}
   m_LocalPosition: {x: 0, y: 1.7629994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4831,7 +4831,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586619469}
-  m_LocalRotation: {x: 0.07866112, y: -0.000000017504146, z: 0.0000000013811755, w: 0.99690145}
+  m_LocalRotation: {x: 0.07866114, y: -0.000000018037307, z: 0.0000000014232452, w: 0.99690145}
   m_LocalPosition: {x: 0, y: 1.7629994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5090,7 +5090,7 @@ MonoBehaviour:
   atWallL: 0
   atWallR: 0
   jumpable: 1
-  rotationSpeed: 250
+  rotationSpeed: 400
   dragger: 0.005
 --- !u!54 &1680110222
 Rigidbody:
@@ -5954,7 +5954,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862229442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6232,7 +6232,7 @@ GameObject:
   - component: {fileID: 1981221741}
   m_Layer: 0
   m_Name: wall (1)
-  m_TagString: Wall
+  m_TagString: Wall(R)
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
