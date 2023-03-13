@@ -53,7 +53,7 @@ Material:
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
     - _BlendMode: 0
-    - _BottomLine: 0.35
+    - _BottomLine: 0.6
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -101,10 +101,10 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 0.2924528, g: 0, b: 0, a: 1}
-    - _BottomColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BottomColor: {r: 0.10702311, g: 0.8148468, b: 0.043735042, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 8095.6235, g: 1799.0275, b: 385.5059, a: 1}
+    - _TopColor: {r: 0.057355925, g: 0.43237543, b: 0.022059971, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2840796041689040014
 MonoBehaviour:
