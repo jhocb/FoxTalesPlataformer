@@ -6,6 +6,9 @@ public class animationControlScript : MonoBehaviour
 {
     Animator animator;
     public rigidBodyMovement rbM;
+    int randomNumber;
+
+    private bool isFightingBool;
         
     // Start is called before the first frame update
     void Start()
@@ -17,6 +20,8 @@ public class animationControlScript : MonoBehaviour
     void Update()
     {
 
+        randomNumber = Random.Range(0, 10);
+        
         #region ifs
         if (Input.GetKey("d") || Input.GetKey("a")){
 
@@ -56,13 +61,71 @@ public class animationControlScript : MonoBehaviour
 
         if (Input.GetKey("f")){
 
-            animator.SetBool("isFighting", true);}
-        else{animator.SetBool("isFighting", false);}
+            animator.SetBool("isFighting", true);
+            rbM.fight = 0.15f;
+            isFightingBool = true;}
+
+        if (Input.GetKey("g")){
+
+            animator.SetBool("isFighting", false);
+            rbM.fight = 1f;
+            isFightingBool=false;}
 
         if (Input.GetKey("x")){
-            int variation = Random.Range(0, 2);
 
+            int variation = Random.Range(0, 3);
+            rbM.fight = 0f;
+
+            switch (variation)
+            {
+                case 0:
+                animator.SetInteger("punchVariation", variation);
+                animator.SetBool("isPunching", true);
+                break;
+
+                case 1:
+                animator.SetInteger("punchVariation", variation);
+                animator.SetBool("isPunching", true);
+                break;
+
+                case 2:
+                animator.SetInteger("punchVariation", variation);
+                animator.SetBool("isPunching", true);
+                break;
+            }
+            
+        }else{animator.SetBool("isPunching", false);}
+
+        if (Input.GetKey("c")){
+            
+            int variation = Random.Range(0, 3);
+
+            switch (variation)
+            {
+                case 0:
+                animator.SetInteger("kickVariation", variation);
+                animator.SetBool("isKicking", true);
+                break;
+
+                case 1:
+                animator.SetInteger("kickVariation", variation);
+                animator.SetBool("isKicking", true);
+                break;
+
+                case 2:
+                animator.SetInteger("kickVariation", variation);
+                animator.SetBool("isKicking", true);
+                break;
+            }
+        }else{animator.SetBool("isKicking", false);}
+
+        if(isFightingBool == true)
+        {
+            rbM.fight = 0.15f;
+            animator.SetInteger("isFightingIdle", randomNumber);
+            Debug.Log(randomNumber);
         }
+        else{rbM.fight = 1f;}
         #endregion
     }
 }

@@ -33,10 +33,14 @@ public class rigidBodyMovement : MonoBehaviour
     private float drag;
     public float dragger = 0.005f;
 
+    //fight speed
+    public float fight;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         drag = rb.drag;
+        fight = 1f;
     }
 
     void FixedUpdate()
@@ -83,7 +87,7 @@ public class rigidBodyMovement : MonoBehaviour
         //the line below considers the vertical movement, wich is disabled for now
         //Vector3 movement = new Vector3(horizontalInput, 0f, verticalInput) * moveSpeed * Time.deltaTime;
         Vector3 movement = new Vector3(horizontalInput, 0f, 0f) * currentSpeed * Time.deltaTime;
-        rb.MovePosition(transform.position + (movement*drag));
+        rb.MovePosition(transform.position + (movement*drag*fight));
         movement.Normalize();
 
         //to check if the player is grounded, if he is, than he can jump, we need to change this for double jump in the future
