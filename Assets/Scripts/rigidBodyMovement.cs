@@ -4,6 +4,7 @@ public class rigidBodyMovement : MonoBehaviour
 {
 
     //starting the public variables for the movement
+    #region Floats
     public float moveSpeed = 5f;
     public float runSpeed = 8f;
     public float slideSpeed = 3f;
@@ -11,6 +12,7 @@ public class rigidBodyMovement : MonoBehaviour
     public float jumpSlide = 15f;
     public float wallJumpUp = 5f;
     public float wallJumpSide = 2f;
+    #endregion
     
     
     //starting the rigidbody

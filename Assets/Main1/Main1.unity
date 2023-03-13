@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 1421.6083, g: 1079.6797, b: 875.2865, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -208,7 +208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &157207113
 Light:
   m_ObjectHideFlags: 0
@@ -1078,7 +1078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428299112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.55, y: -0.60182905, z: -4.274523}
+  m_LocalPosition: {x: 5.55, y: -0.60182905, z: -3.08}
   m_LocalScale: {x: 1.6624, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3950,7 +3950,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160137427}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.086, y: 6.95, z: 12}
+  m_LocalPosition: {x: -24.086, y: 6.95, z: 22.66}
   m_LocalScale: {x: 2.5203, y: 2.5203, z: 2.5203}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4924,7 +4924,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290486209}
-  m_LocalRotation: {x: 0.07866112, y: 0.000000017504146, z: -0.0000000013811755, w: 0.99690145}
+  m_LocalRotation: {x: 0.078661114, y: -0.000000016978863, z: 0.0000000013397274,
+    w: 0.99690145}
   m_LocalPosition: {x: 0, y: 1.7629994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5439,7 +5440,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586619469}
-  m_LocalRotation: {x: 0.07866112, y: 0.000000017504146, z: -0.0000000013811755, w: 0.99690145}
+  m_LocalRotation: {x: 0.078661114, y: -0.000000016978863, z: 0.0000000013397274,
+    w: 0.99690145}
   m_LocalPosition: {x: 0, y: 1.7629994, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5691,8 +5693,8 @@ MonoBehaviour:
   runSpeed: 8
   slideSpeed: 3
   jumpNormal: 20
-  jumpSlide: 40
-  wallJumpUp: 3
+  jumpSlide: 30
+  wallJumpUp: 2
   wallJumpSide: 2
   isGrounded: 1
   atWallL: 0
@@ -7764,7 +7766,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2113018487
 Transform:
   m_ObjectHideFlags: 0
