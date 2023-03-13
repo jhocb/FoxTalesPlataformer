@@ -10,6 +10,9 @@ TagManager:
   - Wall(R)
   - wallR
   - wallL
+  - Punch
+  - Kick
+  - Enemy
   layers:
   - Default
   - TransparentFX
