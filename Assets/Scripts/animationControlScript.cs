@@ -6,7 +6,7 @@ public class animationControlScript : MonoBehaviour
 {
     Animator animator;
     public rigidBodyMovement rbM;
-    
+        
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +16,7 @@ public class animationControlScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         #region ifs
         if (Input.GetKey("d") || Input.GetKey("a")){
 
@@ -52,6 +53,16 @@ public class animationControlScript : MonoBehaviour
 
             animator.SetBool("isSliding", true);}
         else{animator.SetBool("isSliding", false);}
+
+        if (Input.GetKey("f")){
+
+            animator.SetBool("isFighting", true);}
+        else{animator.SetBool("isFighting", false);}
+
+        if (Input.GetKey("x")){
+            int variation = Random.Range(0, 2);
+
+        }
         #endregion
     }
 }
