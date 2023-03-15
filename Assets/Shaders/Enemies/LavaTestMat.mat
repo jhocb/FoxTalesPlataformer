@@ -118,9 +118,9 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Layer1Color: {r: 4.078851, g: 3.8672125, b: 3.8672125, a: 0}
+    - _Layer1Color: {r: 0.98833734, g: 0.9417665, b: 0.9417665, a: 0}
     - _Layer1Speed: {r: 0.1, g: 0, b: 0, a: 0}
-    - _Layer2Color: {r: 0.5062199, g: 5.1104107, b: 0.63366026, a: 0.99215686}
+    - _Layer2Color: {r: 0.1297291, g: 1.3041189, b: 0.16386835, a: 0.99215686}
     - _Layer2Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
     - _OutlineColo: {r: 0.2056694, g: 0.024964403, b: 0.4811321, a: 1}
   m_BuildTextureStacks: []

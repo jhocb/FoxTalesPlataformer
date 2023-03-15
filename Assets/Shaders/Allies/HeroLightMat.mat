@@ -104,7 +104,7 @@ Material:
     - _BottomColor: {r: 0.008523411, g: 0.5710686, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TopColor: {r: 0.008642393, g: 0.58336157, b: 0, a: 1}
+    - _TopColor: {r: 0.014484053, g: 0.9221513, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &7127475542315263125
 MonoBehaviour:
