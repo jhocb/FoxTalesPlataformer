@@ -214,8 +214,8 @@
     ],
     "m_VertexContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 0.0
+            "x": 556.9999389648438,
+            "y": 6.000032901763916
         },
         "m_Blocks": [
             {
@@ -231,8 +231,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 0.0,
-            "y": 200.0
+            "x": 556.9999389648438,
+            "y": 205.99998474121095
         },
         "m_Blocks": [
             {
@@ -796,9 +796,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 1.0,
-        "g": 1.0,
-        "b": 1.0,
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
         "a": 0.0
     },
     "isMainColor": false,
@@ -1846,9 +1846,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -360.967529296875,
-            "y": 259.03253173828127,
-            "width": 208.0,
+            "x": -244.99993896484376,
+            "y": 250.0,
+            "width": 208.00001525878907,
             "height": 302.0
         }
     },
