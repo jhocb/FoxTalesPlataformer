@@ -89,6 +89,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
+    - _Speed: 1.7
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0
