@@ -120,9 +120,9 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Layer1Color: {r: 0.11183853, g: 0.020024918, b: 0.2830189, a: 0}
+    - _Layer1Color: {r: 0.1385526, g: 0, b: 0.38679248, a: 0}
     - _Layer1Speed: {r: 0.1, g: 0, b: 0, a: 0}
     - _Layer2Color: {r: 0.124188974, g: 2.2560997, b: 0.16558531, a: 0.99215686}
     - _Layer2Speed: {r: 0.2, g: 0.2, b: 0, a: 0}
-    - _OutlineColo: {r: 0.18469268, g: 0, b: 0.63966733, a: 1}
+    - _OutlineColo: {r: 0.050695647, g: 0, b: 0.1792453, a: 1}
   m_BuildTextureStacks: []
