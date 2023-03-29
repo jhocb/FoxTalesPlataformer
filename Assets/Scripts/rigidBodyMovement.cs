@@ -16,7 +16,7 @@ public class rigidBodyMovement : MonoBehaviour
     
     
     //starting the rigidbody
-    private Rigidbody rb;
+    public Rigidbody rb;
     
     //flags for the jump system
     public bool isGrounded = true;
@@ -36,11 +36,18 @@ public class rigidBodyMovement : MonoBehaviour
     //fight speed
     public float fight;
 
+    public float slideTime;
+    public float slideCooldown;
+    public float cooldownSlide = 3f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         drag = rb.drag;
         fight = 1f;
+
+        slideTime = 0f;
+        slideCooldown = 0f;
     }
 
     void FixedUpdate()
@@ -62,10 +69,12 @@ public class rigidBodyMovement : MonoBehaviour
          //jumpheight value inside the ifs for shift and control keys
         float jumpHeight = jumpNormal;
 
-        if (Input.GetKey(KeyCode.LeftControl) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftControl) && isGrounded && slideCooldown <= 0f)
         {
             jumpHeight = jumpSlide;
             currentSpeed = slideSpeed;
+
+            slideTime += Time.deltaTime;
 
             //subtracting the drag value, gonna multiply it later
             //which will make the value for the movement go to zero
@@ -75,13 +84,24 @@ public class rigidBodyMovement : MonoBehaviour
             //the value will become negative, which will push the player to the opposite side
             if(drag <= 0.01)
             {
-                dragger = 0;
+                dragger = 0; //reseting the dragger value
+            }
+
+            if(slideTime >= 0.7f) //the time the player slides
+            {
+                slideCooldown = cooldownSlide; //the cooldown for the slide
+                slideTime = 0f; //reseting the slide time
             }
         }
         else
         {
-            drag = 1;
-            dragger = 0.005f;
+            drag = 1; //reseting the drag value
+            dragger = 0.005f; //reseting the dragger value
+        }
+
+        if(slideCooldown > 0f) //the cooldown for the slide
+        {
+            slideCooldown -= Time.deltaTime; //the cooldown for the slide
         }
 
         //the line below considers the vertical movement, wich is disabled for now
