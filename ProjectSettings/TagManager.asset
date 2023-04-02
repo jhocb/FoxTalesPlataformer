@@ -4,15 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Wall
-  - Wall(L)
-  - Wall(R)
-  - wallR
-  - wallL
-  - Punch
-  - Kick
-  - Enemy
+  - Ledge
+  - Vault
+  - Deep Jump
+  - Slide
+  - Reach
+  - Pole
   layers:
   - Default
   - TransparentFX
@@ -20,11 +17,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Background
   - 
   - 
-  - 
-  - 
+  - Ledge
+  - Wall
+  - Player
   - 
   - 
   - 
