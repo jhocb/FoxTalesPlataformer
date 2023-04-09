@@ -10,6 +10,8 @@ TagManager:
   - Slide
   - Reach
   - Pole
+  - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
