@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class slideHitDetection : MonoBehaviour
 {
-    public float damage = 100f;
+    public float damage = 50f;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            EnemyHealth eHealth = other.gameObject.GetComponent<EnemyHealth>();
-            eHealth.curHealth -= damage;
+            EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
+            enemyHealth.curHealth -= damage;
         }
     }
 }
