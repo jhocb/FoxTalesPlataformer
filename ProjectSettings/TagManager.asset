@@ -4,14 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Ledge
+  - Vault
+  - Deep Jump
+  - Slide
+  - Reach
+  - Pole
   - Ground
-  - Wall
-  - Wall(L)
-  - Wall(R)
-  - wallR
-  - wallL
-  - Punch
-  - Kick
   - Enemy
   layers:
   - Default
@@ -20,11 +19,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Background
   - 
   - 
-  - 
-  - 
+  - Ledge
+  - Wall
+  - Player
   - 
   - 
   - 
