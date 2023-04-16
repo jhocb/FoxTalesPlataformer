@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 317.3777, g: 348.73053, b: 454.3842, a: 1}
+  m_IndirectSpecularColor: {r: 261.9007, g: 324.45554, b: 429.43463, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2550,7 +2550,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &432432460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6479,6 +6479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 5226956006316305232}
   goal: {fileID: 414441662}
+  goal2: {fileID: 0}
   distance: 100
 --- !u!195 &1845156454
 NavMeshAgent:
@@ -8100,7 +8101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110261950325144837}
-  m_LocalRotation: {x: 0.083493195, y: 0.00454694, z: -0.0003809742, w: 0.9964979}
+  m_LocalRotation: {x: 0.08349318, y: 0.00454694, z: -0.00038098166, w: 0.9964979}
   m_LocalPosition: {x: -84, y: 54.27, z: -6.829994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8224,7 +8225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110261951437062432}
-  m_LocalRotation: {x: 0.083493195, y: 0.00454694, z: -0.0003809742, w: 0.9964979}
+  m_LocalRotation: {x: 0.08349318, y: 0.00454694, z: -0.00038098166, w: 0.9964979}
   m_LocalPosition: {x: -84, y: 54.27, z: -6.829994}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
