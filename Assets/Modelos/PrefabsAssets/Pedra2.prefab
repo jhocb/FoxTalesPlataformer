@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3975141624570171580}
   - component: {fileID: 4033485934479460255}
   - component: {fileID: 29048171855689046}
-  - component: {fileID: 8398097110348888344}
+  - component: {fileID: 5252635478283714405}
   m_Layer: 0
   m_Name: Pedra2
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8398097110348888344
+--- !u!65 &5252635478283714405
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,5 +95,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.055670824, y: 0.05105112, z: 0.07370076}
-  m_Center: {x: 0.0017699022, y: 0.0023891486, z: 0.010877177}
+  m_Size: {x: 0.018556941, y: 0.017017039, z: 0.02456692}
+  m_Center: {x: 0.00058997143, y: 0.0007963884, z: 0.0036257256}
