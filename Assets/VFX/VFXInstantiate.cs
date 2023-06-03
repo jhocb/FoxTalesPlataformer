@@ -9,8 +9,8 @@ public class VFXInstantiate : MonoBehaviour
 
     void Start()
     {
-        int[] SpawnPoints = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        Transform selectedSpawnPoint = SpawnPoints[(int)Random.Range(0, SpawnPoints.Count - 1)];
+        int randomIndex = Random.Range(0, SpawnPoints.Length);
+        Transform selectedSpawnPoint = SpawnPoints[randomIndex];
         Instantiate(FirePrefab, selectedSpawnPoint.position, selectedSpawnPoint.rotation);
     }
 }
