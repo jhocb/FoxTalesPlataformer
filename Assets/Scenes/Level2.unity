@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 547392523}
   - component: {fileID: 547392522}
   - component: {fileID: 547392521}
-  - component: {fileID: 547392520}
+  - component: {fileID: 547392525}
   m_Layer: 0
   m_Name: portal (2)
   m_TagString: Untagged
@@ -143,20 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &547392520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547392519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83670a5bcbf4a0b42ac401d0242ba252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loadSceneIndex: 1
-  unloadSceneIndex: 2
 --- !u!65 &547392521
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -235,6 +221,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &547392525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547392519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530083a4ca26b4c45999e9e08581c3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadSceneName: Level1
+  unloadSceneName: Level2
 --- !u!1001 &603482022
 PrefabInstance:
   m_ObjectHideFlags: 0
