@@ -52,7 +52,7 @@ public class staminaSystem : MonoBehaviour
         {
             stamina -= dodgeStamina;
             elapsedTime = 0f;
-            animator.SetBool("roll", true);
+            //animator.SetBool("roll", true);
             time = 0;
 
         }
@@ -65,7 +65,7 @@ public class staminaSystem : MonoBehaviour
 
         if (time > 0.5f)
         {
-            animator.SetBool("roll", false);
+            //animator.SetBool("roll", false);
         }
         
         // Ensure stamina does not exceed maximum value
