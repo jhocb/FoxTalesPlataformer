@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 [CustomEditor(typeof(GrassPainter))]
 [InitializeOnLoad]
@@ -8,7 +10,6 @@ public class GrassPainterEditor : Editor
 {
     GrassPainter grassPainter;
     readonly string[] toolbarStrings = { "Add", "Remove", "Edit", "Reproject" };
-
     readonly string[] toolbarStringsEdit = { "Edit Colors", "Edit Length/Width", "Both" };
 
     private void OnEnable()
