@@ -51,12 +51,21 @@ namespace Climbing
         private Quaternion leftFootIKRotation, rightFootIKRotation;
         private float lastPelvisPositionY, lastLeftFootPosition, lastRightFootPosition;
 
+        private staminaSystem Stamina;
+
         void Start()
         {
             controller = GetComponent<ThirdPersonController>();
             rb = GetComponent<Rigidbody>();
             anim = controller.characterAnimation.animator;
             SetCurrentState(MovementState.Walking);
+
+            Stamina = GetComponent<staminaSystem>();
+
+            if(Stamina == null)
+            {
+                Debug.LogError("Stamina System not found");
+            }
         }
 
         void Update()
@@ -74,6 +83,15 @@ namespace Climbing
                 {
                     Landed();
                 }
+            }
+
+            if(Stamina.stamina <= 0)
+            {
+                RunSpeed = 3f;
+            }
+            else
+            {
+                RunSpeed = 4.5f;
             }
         }
 

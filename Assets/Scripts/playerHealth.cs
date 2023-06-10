@@ -34,5 +34,10 @@ public class playerHealth : MonoBehaviour
         curHealth = Mathf.Clamp(curHealth, 0f, 100f);
 
         healthBar.fillAmount = curHealth / 100f;
+
+        if (curHealth <= 0)
+        {
+            
+        }
     }
 }

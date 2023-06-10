@@ -20,9 +20,8 @@ public class staminaSystem : MonoBehaviour
 
     public Image staminaBar; // Stamina bar image
 
-
-    void Start(){
-
+    void Start()
+    {
         animator = GetComponent<Animator>(); // get the Animator component of the enemy 
     }
 
@@ -41,20 +40,19 @@ public class staminaSystem : MonoBehaviour
         }
 
         // Decrease stamina gradually while running
-        if (Input.GetKey(KeyCode.LeftShift) && stamina >= runStamina)
+        if (Input.GetKey(KeyCode.LeftShift) && stamina >= 0)
         {
             stamina -= runStamina * Time.deltaTime;
             elapsedTime = 0f;
         }
 
         // Decrease stamina when the dodge key is pressed
-        if (Input.GetKeyDown(KeyCode.LeftControl) && stamina >= dodgeStamina)
+        if (Input.GetKey(KeyCode.LeftControl) && stamina >= dodgeStamina)
         {
             stamina -= dodgeStamina;
             elapsedTime = 0f;
             //animator.SetBool("roll", true);
             time = 0;
-
         }
 
         // Regenerate stamina if enough time has passed and stamina is not at maximum
@@ -67,7 +65,7 @@ public class staminaSystem : MonoBehaviour
         {
             //animator.SetBool("roll", false);
         }
-        
+
         // Ensure stamina does not exceed maximum value
         stamina = Mathf.Clamp(stamina, 0f, 100f);
 
