@@ -13,7 +13,8 @@ public class MoveTo : MonoBehaviour
     private float punchTime; // Time variable
 
     private NavMeshAgent agent; // NavMeshAgent component
-    Animator animator; // this is the animator component of the enemy 
+    Animator animator; // Animator component of the enemy
+    private float enemyHealth; // Enemy health script
 
     public float distance = 100f; // Distance variable
     public float maxDistance = 4f; // Max distance variable
@@ -21,40 +22,66 @@ public class MoveTo : MonoBehaviour
     public float refreshRate = 0.5f; // Refresh rate variable
     public float punchDistance = 0.95f; // Punch distance variable
     public float punchCooldown = 1f; // Punch cooldown variable
-    
+    public float punchReset = 0.2f;
 
     // Start is called before the first frame update
-    void Start(){
-
+    void Start()
+    {
         time = 0; // Initialize time to 0
         punchTime = 0; // Initialize time to 0
         agent = GetComponent<NavMeshAgent>(); // Get NavMeshAgent component
-        animator = GetComponent<Animator>(); // get the Animator component of the enemy 
+        animator = GetComponent<Animator>(); // Get the Animator component of the enemy
+
+        EnemyHealth enemyHealthScript = GetComponent<EnemyHealth>(); // Get the EnemyHealth script
+        if (enemyHealthScript != null)
+        {
+            enemyHealth = enemyHealthScript.curHealth; // Access the curHealth variable
+        }
+        else
+        {
+            Debug.LogError("EnemyHealth script not found on the same GameObject.");
+        }
     }
 
-    void FixedUpdate(){
-
+    void Update()
+    {
         time += Time.deltaTime; // Increment time by the time between frames
         punchTime += Time.deltaTime; // Increment time by the time between frames
 
         distance = Vector3.Distance(transform.position, player.transform.position); // Calculate distance between player and goal
 
-        if (time >= refreshRate && (distance <=maxDistance || distance >= minDistance)){ // If time is greater than 0.5 seconds and the distance is less than 10 and greater than 0.5
+        if (time >= refreshRate && (distance <= maxDistance || distance >= minDistance)  /*enemyHealth > 0*/)
+        { // If time is greater than 0.5 seconds and the distance is less than 10 and greater than 0.5
             goal.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z); // Set goal position to player position
             agent.destination = goal.position; // Set the destination to the goal position
             time = 0f; // Reset time
             animator.SetBool("running", true); // Set running to true
-        } 
+        }
 
-        if(distance > maxDistance || distance < minDistance){ // if the distance is greater than 7 and less than 0.7
+        if (distance > maxDistance || distance < minDistance)
+        { // if the distance is greater than 7 and less than 0.7
             agent.destination = transform.position; // Set the destination to the goal position
             animator.SetBool("running", false); // Set running to false
         }
 
-        if(distance <= punchDistance && punchTime >= punchCooldown){ // if the distance is less than 0.7
+        if (distance <= punchDistance && punchTime >= punchCooldown)
+        { // if the distance is less than 0.7
             animator.SetBool("punching", true); // Set punching to true
             punchTime = 0f; // Reset punch time
-            animator.SetBool("punching", false); // Set running to false
+            StartCoroutine(ResetPunchingAnimation()); // Start the coroutine to reset the punching animation
         }
+
+        if (animator.GetBool("punching"))
+        {
+            Vector3 direction = player.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5f);
+        }
+    }
+
+    IEnumerator ResetPunchingAnimation()
+    {
+        yield return new WaitForSeconds(punchReset);
+        animator.SetBool("punching", false); // Set punching to false
     }
 }
