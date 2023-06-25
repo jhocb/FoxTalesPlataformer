@@ -14,6 +14,7 @@ public class MoveTo : MonoBehaviour
 
     private NavMeshAgent agent; // NavMeshAgent component
     Animator animator; // Animator component of the enemy
+    private float enemyHealth; // Enemy health script
 
     public float distance = 100f; // Distance variable
     public float maxDistance = 4f; // Max distance variable
@@ -30,6 +31,16 @@ public class MoveTo : MonoBehaviour
         punchTime = 0; // Initialize time to 0
         agent = GetComponent<NavMeshAgent>(); // Get NavMeshAgent component
         animator = GetComponent<Animator>(); // Get the Animator component of the enemy
+
+        EnemyHealth enemyHealthScript = GetComponent<EnemyHealth>(); // Get the EnemyHealth script
+        if (enemyHealthScript != null)
+        {
+            enemyHealth = enemyHealthScript.curHealth; // Access the curHealth variable
+        }
+        else
+        {
+            Debug.LogError("EnemyHealth script not found on the same GameObject.");
+        }
     }
 
     void Update()
@@ -39,7 +50,7 @@ public class MoveTo : MonoBehaviour
 
         distance = Vector3.Distance(transform.position, player.transform.position); // Calculate distance between player and goal
 
-        if (time >= refreshRate && (distance <= maxDistance || distance >= minDistance))
+        if (time >= refreshRate && (distance <= maxDistance || distance >= minDistance)  /*enemyHealth > 0*/)
         { // If time is greater than 0.5 seconds and the distance is less than 10 and greater than 0.5
             goal.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z); // Set goal position to player position
             agent.destination = goal.position; // Set the destination to the goal position
@@ -60,11 +71,12 @@ public class MoveTo : MonoBehaviour
             StartCoroutine(ResetPunchingAnimation()); // Start the coroutine to reset the punching animation
         }
 
-        /*if(punchTime<punchCooldown){
-            animator.SetBool("punching", false); // Set punching to true
-
-        }*/
-        
+        if (animator.GetBool("punching"))
+        {
+            Vector3 direction = player.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * 5f);
+        }
     }
 
     IEnumerator ResetPunchingAnimation()
@@ -73,4 +85,3 @@ public class MoveTo : MonoBehaviour
         animator.SetBool("punching", false); // Set punching to false
     }
 }
-
