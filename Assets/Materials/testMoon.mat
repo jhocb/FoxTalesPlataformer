@@ -10,10 +10,11 @@ Material:
   m_Name: testMoon
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
+  - _EMISSION
   - _ENVIRONMENTREFLECTIONS_OFF
   - _SPECULAR_SETUP
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -297,7 +298,7 @@ Material:
     - _Color: {r: 0.41392168, g: 0.067283645, b: 0.8490566, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
-    - _EmissionColor: {r: 0.21040857, g: 0, b: 0.66310626, a: 1}
+    - _EmissionColor: {r: 2.6844366e+29, g: 0, b: 8.4012925e+29, a: 1}
     - _EmissiveColor: {r: 23332.537, g: 72926.71, b: 500000, a: 500000}
     - _EmissiveColorLDR: {r: 0.23921567, g: 0.4180253, b: 1, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
