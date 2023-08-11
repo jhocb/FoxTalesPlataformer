@@ -14,8 +14,7 @@ For now, we invite players to experience a taste of Guardian's Falls - Wounds wi
 
 # Members
 
-Jhonnatan Barbosa - Game Designer, Programmer, Producer
-Portfolio: [www.jhorro.com](https://jhorro.com)
+Jhonnatan Barbosa - Game Designer, Programmer, Producer - Portfolio: [www.jhorro.com](https://jhorro.com)
 
 Matheus Celeste - Character Artist, 3D Generalist, Tech Artist, Producer
 

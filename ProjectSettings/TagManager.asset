@@ -12,6 +12,7 @@ TagManager:
   - Pole
   - Ground
   - Enemy
+  - jumpSurface
   layers:
   - Default
   - TransparentFX
