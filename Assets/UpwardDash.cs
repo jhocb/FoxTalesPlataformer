@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class UpwardDash : MonoBehaviour
+public class upwardDash : MonoBehaviour
 {
     public float dashForce = 10f;       // The force applied for the upward dash
     public float dashDuration = 0.2f;   // The duration of the dash
