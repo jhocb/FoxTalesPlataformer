@@ -9,48 +9,39 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenu;
 
-    void Update()
+    private void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
-            {
                 Resume();
-            }
             else
-            {
                 Pause();
-            }
         }
-
     }
-
 
     public void Resume()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1.5f;
+        Time.timeScale = 1f; // Set the time scale back to normal
         GameIsPaused = false;
     }
 
-    void Pause()
+    private void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; // Pause the game
         GameIsPaused = true;
     }
 
     public void LoadMenu()
     {
-        Time.timeScale = 1.5f;
-        SceneManager.LoadSceneAsync(0);
+        Time.timeScale = 1f; // Set the time scale back to normal
+        SceneManager.LoadScene(0); // Load the main menu scene synchronously
     }
 
     public void QuitGame()
     {
         Application.Quit();
     }
-
-
 }
