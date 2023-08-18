@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hit03_Mat
+  m_Name: Hit03_Mat 1
   m_Shader: {fileID: 4800000, guid: 0406db5a14f94604a8c57ccfbc9f3b46, type: 3}
   m_ValidKeywords:
   - _COLOROVERLAY_ON
@@ -41,7 +41,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 40c77c884c22e1e418c2db6b01d20b15, type: 3}
+        m_Texture: {fileID: 2800000, guid: cda4776863a2b814182139c1020b52b4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -140,10 +140,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.23348075, g: 0.8113207, b: 0.20971864, a: 1}
+    - _BaseColor: {r: 0.23348078, g: 0.8113208, b: 0.20971872, a: 1}
     - _BaseColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
-    - _Color: {r: 0.23348072, g: 0.8113207, b: 0.20971861, a: 1}
+    - _Color: {r: 0.23348075, g: 0.8113207, b: 0.20971864, a: 1}
     - _EmissionColor: {r: 0.4, g: 1.6627451, b: 0.4392157, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
