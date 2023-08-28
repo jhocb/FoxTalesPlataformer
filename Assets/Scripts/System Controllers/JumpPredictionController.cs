@@ -5,7 +5,7 @@ using System;
 
 namespace Climbing
 {
-    [RequireComponent(typeof(ThirdPersonController))]
+    
     public class JumpPredictionController : MonoBehaviour
     {
         public bool showDebug = false;
@@ -14,7 +14,16 @@ namespace Climbing
         [SerializeField] private float maxHeight = 1.5f;
         [SerializeField] private float maxDistance = 5.0f;
 
+
+        private Rigidbody rb;
+
+
+        public bool isTouchingJumpSurface = false;
+        public float dashForce = 10f;
+
+
         private ThirdPersonController controller;
+        
         private float turnSmoothVelocity;
         private Vector3 origin;
         private Vector3 target;
@@ -30,6 +39,19 @@ namespace Climbing
         private void Start()
         {
             controller = GetComponent<ThirdPersonController>();
+            rb = GetComponent<Rigidbody>();
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+        if (other.CompareTag("jumpSurface")){
+            isTouchingJumpSurface = true;}
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+        if (other.CompareTag("jumpSurface")){
+            isTouchingJumpSurface = false;}
         }
 
         void OnDrawGizmos()
@@ -201,6 +223,10 @@ namespace Climbing
 
                     points.Clear();
                 }
+            }
+            if(controller.characterInput.jump && isTouchingJumpSurface){
+                rb.AddForce(Vector3.up * dashForce, ForceMode.Impulse);
+                Debug.Log("Jumping");
             }
         }
 
