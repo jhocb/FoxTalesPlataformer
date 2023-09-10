@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class mainMenu : MonoBehaviour
 {
@@ -9,10 +11,41 @@ public class mainMenu : MonoBehaviour
     public GameObject settingsEmpty; // the settings menu
     public GameObject creditsEmpty; // the credits menu
 
-    public void playGame()//loads the next scene in the build index
+    public GameObject LoadingScreen; // the loading screen
+    public Image LoadingBar; // the loading bar
+
+    private float progress; // the progress of the loading bar
+
+    /*public void playGame()//loads the next scene in the build index
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Debug.Log("Play");
+    }*/
+
+    public void Start()
+    {
+        progress = 0;
+    }
+    public void playGame()
+    {
+        
+        StartCoroutine(LoadAsyncScene());
+    }
+
+    public IEnumerator LoadAsyncScene()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
+        LoadingScreen.SetActive(true);
+
+        while (!asyncLoad.isDone)
+        {
+            Debug.Log("Loading Progress: " + asyncLoad.progress);
+            progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
+            LoadingBar.fillAmount = progress;
+            yield return null;
+            Debug.Log("Loading Progress: " + asyncLoad.progress);
+        }
     }
 
     public void quitGame()//quits the game
