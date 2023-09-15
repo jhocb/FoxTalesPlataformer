@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class libraryRotation : MonoBehaviour
 {
-    public float speed = 5.0f; // Adjust this to control the speed of the object.
+    public float speed = 0.5f; // Adjust this to control the speed of the object.
 
     private void Update()
     {
