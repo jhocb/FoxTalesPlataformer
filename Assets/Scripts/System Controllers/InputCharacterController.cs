@@ -14,6 +14,7 @@ namespace Climbing
         [HideInInspector] public bool jump;
         [HideInInspector] public bool drop;
 
+
         private void OnEnable()
         {
             if(controls != null)
@@ -39,16 +40,25 @@ namespace Climbing
             controls.Player.Run.performed += ctx => run = ctx.ReadValueAsButton();
             controls.Player.Run.canceled += ctx => run = ctx.ReadValueAsButton();
             //controls.GameManager.Exit.performed += ctx => Exit();
+            
         }
 
         void ToggleRun()
         {
-            if (movement.magnitude > 0.2f && run == false)
-                run = true;
-            else
-                run = false;
+
+    if (movement.magnitude > 0.2f && run == false)
+    {
+        run = true;
+        
+    }
+    else
+    {
+        run = false;
+        
+    }
         }
 
+    
         /*void Exit()
         {
             Application.Quit();
