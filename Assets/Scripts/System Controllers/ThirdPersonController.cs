@@ -47,6 +47,8 @@ namespace Climbing
         public float runningPitch = 2.0f; // Default value for running pitch
         public float walkingPitch = 1.35f; // Default value for walking pitch
 
+        public float velocityA;
+
         public AudioSource audioSource;
 
         private void Awake()
@@ -71,6 +73,8 @@ namespace Climbing
         {
             //Detect if Player is on Ground
             isGrounded = OnGround();
+
+            velocityA = GetCurrentVelocity();
 
             //Get Input if controller and movement are not disabled
             if (!dummy && allowMovement)

@@ -20,7 +20,9 @@ public class footsetpsController : MonoBehaviour
         inputController = GetComponent<InputCharacterController>(); // Get the reference
     }
 
-    void PlayRandomFootstepSound()
+    public void PlayRandomFootstepSound()
+{
+    if (audioSource != null && audioSource.isActiveAndEnabled)
     {
         int randomIndex = Random.Range(0, footstepSounds.Length);
         audioSource.clip = footstepSounds[randomIndex];
@@ -28,6 +30,7 @@ public class footsetpsController : MonoBehaviour
         audioSource.Play();
         isAudioPlaying = true;
     }
+}
 
     void StopFootstepSound()
     {
