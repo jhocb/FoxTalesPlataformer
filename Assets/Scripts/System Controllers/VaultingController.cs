@@ -29,6 +29,11 @@ namespace Climbing
 
         private List<VaultAction> actions = new List<VaultAction>();
         private VaultAction curAction;
+        public GameObject audioSource;
+        public footsetpsController footstepsController;
+
+        private bool hasPlayedAudio = false;
+
 
         public void Start()
         {
@@ -69,22 +74,34 @@ namespace Climbing
                 Add(new VaultDown(controller));
             }
         }
-
-        void Update()
+void Update()
         {
             if (!controller.isVaulting)
             {
                 curAction = null;
+                if (!hasPlayedAudio) // Check if audio has not been played yet
+                {
+                    audioSource.SetActive(false);
+                    footstepsController.PlayRandomFootstepSound();
+                    hasPlayedAudio = true; // Set the flag to true after playing audio
+                }
             }
 
             //Check if vaulting action can be performed
             foreach (var item in actions)
             {
                 if (item.CheckAction())
-                {
-                    curAction = item;
-                    controller.isVaulting = true;
-                    break;
+{
+    curAction = item;
+    controller.isVaulting = true;
+    if (audioSource != null)
+    {
+        audioSource.SetActive(false);
+    }
+    break;
+}
+                else{
+                    audioSource.SetActive(true);
                 }
             }
 
@@ -93,7 +110,6 @@ namespace Climbing
             {
                 if (!curAction.Update())
                     controller.isVaulting = false;
-
             }
         }
 
@@ -104,7 +120,6 @@ namespace Climbing
             {
                 if(!curAction.FixedUpdate())
                     controller.isVaulting = false;
-
             }
         }
 
@@ -130,5 +145,4 @@ namespace Climbing
                 actions.Add(action);
         }
     }
-
 }
