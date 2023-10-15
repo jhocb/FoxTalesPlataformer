@@ -13,6 +13,11 @@ public class resolutionControl : MonoBehaviour
     private List<Resolution> filteredResolutions;
 
     private float currentRefreshRate;
+
+    public AudioSource menuSelect; // the audio source for the select button
+
+    public AudioSource menuBack; // the audio source for the back button
+
     private int currentResolutionIndex = 0;
     // Start is called before the first frame update
     void Start()
@@ -52,16 +57,19 @@ public class resolutionControl : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = filteredResolutions[resolutionIndex];
+        menuSelect.Play();
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     public void SetFullscreen()
     {
         Screen.fullScreen = true;
+        menuSelect.Play();
     }
 
     public void SetWindowed()
     {
         Screen.fullScreen = false;
+        menuSelect.Play();
     }
 }
