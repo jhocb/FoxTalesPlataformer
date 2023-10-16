@@ -6,101 +6,84 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
-
     public GameObject pauseMenu;
     public GameObject settingsEmpty;
     public GameObject menuEmpty;
 
-    public AudioSource menuSelect; // the audio source for the select button
+    public AudioSource menuSelect;
+    public AudioSource menuBack;
 
-    public AudioSource menuBack; // the audio source for the back button
+    private GameObject activeMenu;
+
+    private void Start()
+    {
+        activeMenu = pauseMenu; // Start with the Pause menu as the active menu
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))//if the escape key is pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
+            {
                 Resume();
+            }
             else
+            {
                 Pause();
+            }
         }
     }
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
-        menuSelect.Play();
-        settingsEmpty.SetActive(false);
         menuEmpty.SetActive(true);
-        Time.timeScale = 1f; // Set the time scale back to normal
+        settingsEmpty.SetActive(false);
+        activeMenu.SetActive(false);
+        Time.timeScale = 1f;
         GameIsPaused = false;
         Debug.Log("Resumed");
     }
 
     private void Pause()
     {
-        pauseMenu.SetActive(true);
-        Time.timeScale = 0f; // Pause the game
+        activeMenu.SetActive(true);
+        Time.timeScale = 0f;
         GameIsPaused = true;
         Debug.Log("Paused");
     }
 
     public void LoadMenu()
     {
-        Time.timeScale = 1f; // Set the time scale back to normal
-        menuSelect.Play();
-        SceneManager.LoadScene(0); // Load the main menu scene synchronously
+        Resume();
+        SceneManager.LoadScene(0);
         Debug.Log("Loading menu...");
     }
 
-    public void QuitGame()//quits the game
+    public void QuitGame()
     {
         menuSelect.Play();
         Application.Quit();
         Debug.Log("Quit");
     }
 
-    public void back()//returns to the main menu
+    public void back()
     {
         menuBack.Play();
         menuEmpty.SetActive(true);
         settingsEmpty.SetActive(false);
+        activeMenu = menuEmpty; // Set the active menu to the Main menu
         Debug.Log("Back");
     }
 
-        public void SetUltraQuality()//sets the quality to ultra
-    {
-        menuSelect.Play();
-        QualitySettings.SetQualityLevel(0);
-        Debug.Log("Ultra");
-    }
+    
 
-    public void SetHighQuality()//sets the quality to high
-    {
-        menuSelect.Play();
-        QualitySettings.SetQualityLevel(1);
-        Debug.Log("High");
-    }
-
-    public void SetMediumQuality()//sets the quality to medium
-    {
-        menuSelect.Play();
-        QualitySettings.SetQualityLevel(2);
-        Debug.Log("Medium");
-    }
-
-    public void SetLowQuality()//sets the quality to low
-    {
-        menuSelect.Play();
-        QualitySettings.SetQualityLevel(3);
-        Debug.Log("Low");
-    }
-
-    public void settings()//opens the settings menu
+    public void settings()
     {
         menuSelect.Play();
         menuEmpty.SetActive(false);
         settingsEmpty.SetActive(true);
+        activeMenu = settingsEmpty; // Set the active menu to the Settings menu
         Debug.Log("Settings");
     }
 }

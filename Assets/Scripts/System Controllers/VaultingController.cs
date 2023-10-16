@@ -30,7 +30,7 @@ namespace Climbing
         private List<VaultAction> actions = new List<VaultAction>();
         private VaultAction curAction;
         public GameObject audioSource;
-        public footsetpsController footstepsController;
+        public audioController audioController;
 
         private bool hasPlayedAudio = false;
 
@@ -82,7 +82,7 @@ void Update()
                 if (!hasPlayedAudio) // Check if audio has not been played yet
                 {
                     audioSource.SetActive(false);
-                    footstepsController.PlayRandomFootstepSound();
+                    audioController.PlayRandomFootstepSound();
                     hasPlayedAudio = true; // Set the flag to true after playing audio
                 }
             }
