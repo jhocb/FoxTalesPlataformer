@@ -43,6 +43,14 @@ namespace Climbing
         private float turnSmoothTime = 0.1f;
         private float turnSmoothVelocity;
 
+        
+        public float runningPitch = 2.0f; // Default value for running pitch
+        public float walkingPitch = 1.35f; // Default value for walking pitch
+
+        public float velocityA;
+
+        public AudioSource audioSource;
+
         private void Awake()
         {
             characterInput = GetComponent<InputCharacterController>();
@@ -66,6 +74,8 @@ namespace Climbing
             //Detect if Player is on Ground
             isGrounded = OnGround();
 
+            velocityA = GetCurrentVelocity();
+
             //Get Input if controller and movement are not disabled
             if (!dummy && allowMovement)
             {
@@ -75,10 +85,12 @@ namespace Climbing
                 if (characterInput.run && characterInput.movement.magnitude > 0.5f)
                 {
                     ToggleRun();
+                    audioSource.pitch = runningPitch;
                 }
                 else if (!characterInput.run)
                 {
                     ToggleWalk();
+                    audioSource.pitch = walkingPitch;
                 }
             }
         }
