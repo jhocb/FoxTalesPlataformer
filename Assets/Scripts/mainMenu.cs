@@ -16,9 +16,17 @@ public class mainMenu : MonoBehaviour
 
     private float progress;
 
+    private const string QualityLevelKey = "QualityLevel";
+
     public void Start()
     {
         progress = 0;
+        // Load and apply the quality level from PlayerPrefs
+        if (PlayerPrefs.HasKey(QualityLevelKey))
+        {
+            int savedQualityLevel = PlayerPrefs.GetInt(QualityLevelKey);
+            QualitySettings.SetQualityLevel(savedQualityLevel);
+        }
     }
 
     public void playGame()
@@ -48,33 +56,41 @@ public class mainMenu : MonoBehaviour
         Application.Quit();
     }
 
-       public void SetUltraQuality()//sets the quality to ultra
-        {
-            menuSelect.Play();
-            QualitySettings.SetQualityLevel(0);
-            Debug.Log("Ultra");
-        }
+    public void SetUltraQuality() // sets the quality to ultra
+    {
+        menuSelect.Play();
+        QualitySettings.SetQualityLevel(0);
+        PlayerPrefs.SetInt(QualityLevelKey, 0); // Save the quality level to PlayerPrefs
+        PlayerPrefs.Save();
+        Debug.Log("Ultra");
+    }
 
-        public void SetHighQuality()//sets the quality to high
-        {
-            menuSelect.Play();
-            QualitySettings.SetQualityLevel(1);
-            Debug.Log("High");
-        }
+    public void SetHighQuality() // sets the quality to high
+    {
+        menuSelect.Play();
+        QualitySettings.SetQualityLevel(1);
+        PlayerPrefs.SetInt(QualityLevelKey, 1); // Save the quality level to PlayerPrefs
+        PlayerPrefs.Save();
+        Debug.Log("High");
+    }
 
-        public void SetMediumQuality()//sets the quality to medium
-        {
-            menuSelect.Play();
-            QualitySettings.SetQualityLevel(2);
-            Debug.Log("Medium");
-        }
+    public void SetMediumQuality() // sets the quality to medium
+    {
+        menuSelect.Play();
+        QualitySettings.SetQualityLevel(2);
+        PlayerPrefs.SetInt(QualityLevelKey, 2); // Save the quality level to PlayerPrefs
+        PlayerPrefs.Save();
+        Debug.Log("Medium");
+    }
 
-        public void SetLowQuality()//sets the quality to low
-        {
-            menuSelect.Play();
-            QualitySettings.SetQualityLevel(3);
-            Debug.Log("Low");
-        }
+    public void SetLowQuality() // sets the quality to low
+    {
+        menuSelect.Play();
+        QualitySettings.SetQualityLevel(3);
+        PlayerPrefs.SetInt(QualityLevelKey, 3); // Save the quality level to PlayerPrefs
+        PlayerPrefs.Save();
+        Debug.Log("Low");
+    }
 
     public void settings()
     {

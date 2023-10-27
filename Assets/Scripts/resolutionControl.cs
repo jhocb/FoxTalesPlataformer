@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class resolutionControl : MonoBehaviour
 {
-
     [SerializeField] private TMP_Dropdown resolutionDropdown;
 
     private Resolution[] resolutions;
@@ -14,11 +13,15 @@ public class resolutionControl : MonoBehaviour
 
     private float currentRefreshRate;
 
-    public AudioSource menuSelect; // the audio source for the select button
-
-    public AudioSource menuBack; // the audio source for the back button
+    public AudioSource menuSelect;
+    public AudioSource menuBack;
 
     private int currentResolutionIndex = 0;
+
+    private const string ResolutionWidthKey = "ResolutionWidth";
+    private const string ResolutionHeightKey = "ResolutionHeight";
+    private const string FullscreenKey = "IsFullscreen";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,17 +62,47 @@ public class resolutionControl : MonoBehaviour
         Resolution resolution = filteredResolutions[resolutionIndex];
         menuSelect.Play();
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+        // Store the selected resolution in PlayerPrefs
+        PlayerPrefs.SetInt(ResolutionWidthKey, resolution.width);
+        PlayerPrefs.SetInt(ResolutionHeightKey, resolution.height);
+        PlayerPrefs.Save();
     }
 
     public void SetFullscreen()
     {
-        Screen.fullScreen = true;
         menuSelect.Play();
+        Screen.fullScreen = true;
+
+        // Store the fullscreen mode in PlayerPrefs
+        PlayerPrefs.SetInt(FullscreenKey, 1); // 1 represents fullscreen
+        PlayerPrefs.Save();
     }
 
     public void SetWindowed()
     {
-        Screen.fullScreen = false;
         menuSelect.Play();
+        Screen.fullScreen = false;
+
+        // Store the windowed mode in PlayerPrefs
+        PlayerPrefs.SetInt(FullscreenKey, 0); // 0 represents windowed
+        PlayerPrefs.Save();
+    }
+
+    // Call this method at the start of the game to apply the stored settings
+    public void ApplyStoredSettings()
+    {
+        int storedWidth = PlayerPrefs.GetInt(ResolutionWidthKey, Screen.currentResolution.width);
+        int storedHeight = PlayerPrefs.GetInt(ResolutionHeightKey, Screen.currentResolution.height);
+        int storedFullscreen = PlayerPrefs.GetInt(FullscreenKey, Screen.fullScreen ? 1 : 0);
+
+        Resolution storedResolution = new Resolution
+        {
+            width = storedWidth,
+            height = storedHeight
+        };
+
+        // Set the resolution and fullscreen/windowed mode based on stored settings
+        Screen.SetResolution(storedResolution.width, storedResolution.height, storedFullscreen == 1);
     }
 }
