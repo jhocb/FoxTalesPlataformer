@@ -43,16 +43,16 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.27
   intensity:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.6
   scatter:
     m_OverrideState: 1
-    m_Value: 0.591
+    m_Value: 1
   clamp:
     m_OverrideState: 1
-    m_Value: 65472
+    m_Value: 1000
   tint:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0.9184065, b: 1, a: 1}
@@ -61,7 +61,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -215,8 +215,8 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.30289534
-          value: 0.55607474
+          time: 0.36610168
+          value: 0.5839416
           inSlope: 1
           outSlope: 1
           tangentMode: 0
