@@ -15,6 +15,9 @@ TagManager:
   - jumpSurface
   - CUBO
   - TochaGrande
+  - Checkpoint
+  - Coletavel
+  - Edge
   layers:
   - Default
   - TransparentFX
