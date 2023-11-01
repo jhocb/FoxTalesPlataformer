@@ -17,7 +17,8 @@ TagManager:
   - TochaGrande
   - Checkpoint
   - Coletavel
-  - Edge
+  - ClimbableWall
+  - ClimbableEdge
   layers:
   - Default
   - TransparentFX
@@ -38,8 +39,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Parede
+  - Aresta
   - 
   - Canvas
   - 

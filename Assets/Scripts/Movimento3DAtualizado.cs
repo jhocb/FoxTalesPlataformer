@@ -1,114 +1,139 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(CapsuleCollider))]
 public class Movimento3DAtualizado : MonoBehaviour
 {
-    private Transform characterTransform;
+    // Movimento
     public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    public float gravity = -9.81f;
-    private CharacterController characterController;
-    private Vector3 moveDirection;
-    float horizontalInput;
-    float verticalInput;
+    public float jumpForce = 7f;
+    private Rigidbody rb;
+    public bool isGrounded;
+    public bool freeze;
 
-
-    //EDGE GRAB
-    public float raycastDistance = 1.5f;
-    private bool isGrabbingEdge = false;
-
-
-    //DASH
+    // DASH
+    // Lado
     public float dashSpeed = 10f;
-    public float dashVerticalSpeed = 10f;
-    public float dashDuration = 0.2f;
+    public float dashDuration = 0.5f;
+    [SerializeField]
     private bool isDashing = false;
-    private Vector3 dashDirection;
-    private float dashTime;
 
-    void Start()
+    // Cima
+    [SerializeField]
+    public bool hasUsedUpwardDash = false;
+    [SerializeField]
+    public bool isDashingUp = false;
+    public float upwardDashSpeed = 10f;
+    public float upwardDashDuration = 0.5f;
+
+    // Escalada
+    public Transform climbDetection; // Referência ao objeto de detecção de colisões
+    public LayerMask climbableLayer; // A LayerMask para identificar as superfícies escaláveis
+    public float climbSpeed = 10f; // Velocidade de escalada
+
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        characterTransform = transform;
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private void Update()
     {
-
-        //MOVIMENTO
         // Verifique se o personagem está no chão
-        if (characterController.isGrounded)
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+
+        // Movimento lateral
+        float moveX = Input.GetAxis("Horizontal");
+        float moveZ = Input.GetAxis("Vertical");
+        Vector3 moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
+        if (moveDirection != Vector3.zero)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-            Vector3 move = transform.right * horizontalInput + transform.forward * verticalInput;
-            moveDirection = move * moveSpeed;
-
-            if (Input.GetButtonDown("Jump"))
-            {
-                moveDirection.y = jumpForce;
-            }
+            // Rotacionar o personagem na direção do movimento
+            transform.forward = moveDirection;
         }
+        // Aplicar força para movimento
+        Vector3 moveVelocity = moveDirection * moveSpeed;
+        moveVelocity.y = rb.velocity.y; // Manter a componente vertical da velocidade
+        rb.velocity = moveVelocity;
 
-
-
-
-
-        // Aplicar a gravidade
-        moveDirection.y += gravity * Time.deltaTime;
-
-        // Mover o personagem
-        characterController.Move(moveDirection * Time.deltaTime);
-
-
-        //GRAB EDGE
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, raycastDistance))
+        // Pular
+        if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            // Verifique se a superfície é adequada para agarrar (por exemplo, tag "Edge" para as arestas).
-            if (hit.collider.CompareTag("Edge") && Input.GetKeyDown(KeyCode.Space))
-            {
-                isGrabbingEdge = true;
-                // Implemente a lógica para agarrar a aresta aqui.
-            }
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-
-        if (isGrabbingEdge)
-        {
-            moveDirection.y = 0f;
-            float verticalInput = Input.GetAxis("Vertical");
-            float horizontalInput = Input.GetAxis("Horizontal");
-            // Implemente a lógica para o personagem agarrar na aresta e subir ou descer.
-        }
-
-
-        //DASHS
-        //VERTICAL
+        // Dash lateral com um botão separado
         if (Input.GetKeyDown(KeyCode.J) && !isDashing)
         {
-            isDashing = true;
-            dashDirection = transform.forward;  // Por exemplo, você pode fazer o dash para frente.
-            dashTime = Time.time + dashDuration;
+            Vector3 dashDirection = transform.forward; // Direção para a qual o personagem está olhando
+            StartCoroutine(Dash(dashDirection * dashSpeed));
         }
-        //HORIZONTAL
-        if (Input.GetKeyDown(KeyCode.L) && !isDashing)
+        // Dash para cima com um botão separado
+        if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
-            isDashing = true;
-            dashDirection = Vector3.up;  // Ou outra direção vertical desejada.
-            dashTime = Time.time + dashDuration;
+            StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
         }
-        //VERIFICAR ESTADO E APLICAR A VELOCIDADE
-        if (isDashing && Time.time < dashTime)
+        if (moveDirection != Vector3.zero)
         {
-            characterController.Move(dashDirection * dashSpeed * Time.deltaTime);
+            float rayDistance = 1.0f;
+            // Verifique se o jogador está se movendo na direção da parede
+            if (Physics.Raycast(transform.position, moveDirection, out RaycastHit hit, rayDistance, climbableLayer))
+            {
+                Debug.Log("AGARRADO");
+                // Inicie a escalada automaticamente
+                StartCoroutine(Climb(hit.point, hit.normal));
+            }
         }
-        else
+        Debug.DrawRay(transform.position, moveDirection * climbSpeed * Time.deltaTime, Color.red); // Desenhe o Raycast
+
+        if (isGrounded)
         {
-            isDashing = false;
+            hasUsedUpwardDash = false; // Redefinir ao tocar o chão
         }
+    }
+
+    private IEnumerator Dash(Vector3 direction)
+    {
+        isDashing = true;
+        float startTime = Time.time;
+
+        while (Time.time - startTime < dashDuration)
+        {
+            rb.velocity = direction;
+
+            yield return null;
+        }
+
+        isDashing = false;
+        rb.velocity = Vector3.zero;
+    }
+    private IEnumerator UpwardDash(Vector3 direction)
+    {
+        hasUsedUpwardDash = true;
+        isDashingUp = true;
+
+        float startTime = Time.time;
+
+        while (Time.time - startTime < upwardDashDuration)
+        {
+            rb.velocity = direction;
+
+            yield return null;
+        }
+        isDashingUp = false;
+        rb.velocity = Vector3.zero;
+    }
+
+    private IEnumerator Climb(Vector3 climbPoint, Vector3 wallNormal)
+    {
+        float startTime = Time.time;
+
+        while (Time.time - startTime < 1f)
+        {
+            Vector3 climbDirection = (climbPoint - transform.position).normalized;
+            rb.velocity = climbDirection * climbSpeed;
+
+            yield return null;
+        }
+
+        rb.velocity = Vector3.zero;
     }
 }
