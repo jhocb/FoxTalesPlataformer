@@ -15,19 +15,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.5
   contrast:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 9.19
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.759434, b: 0.9842252, a: 1}
+    m_Value: {r: 0.5935759, g: 0.48584908, b: 1, a: 1}
   hueShift:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: -40
 --- !u!114 &-32820517437979890
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -43,25 +43,25 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.27
   intensity:
     m_OverrideState: 1
-    m_Value: 20
+    m_Value: 0.6
   scatter:
     m_OverrideState: 1
-    m_Value: 0.305
+    m_Value: 1
   clamp:
-    m_OverrideState: 0
-    m_Value: 65472
+    m_OverrideState: 1
+    m_Value: 1000
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.16703449, g: 0.44714993, b: 0.8679245, a: 1}
+    m_Value: {r: 0, g: 0.9184065, b: 1, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
   skipIterations:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: GlobalVolumeProfile
+  m_Name: GVMoonlit
   m_EditorClassIdentifier: 
   components:
   - {fileID: 1881579288749618558}
@@ -116,9 +116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   master:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
-      <length>k__BackingField: 2
+      <length>k__BackingField: 3
       m_Loop: 0
       m_ZeroValue: 0
       m_Range: 1
@@ -128,6 +128,15 @@ MonoBehaviour:
         - serializedVersion: 3
           time: 0
           value: 0
+          inSlope: 0
+          outSlope: 1
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 0.19821826
+          value: 0.36448598
           inSlope: 1
           outSlope: 1
           tangentMode: 0
@@ -138,7 +147,7 @@ MonoBehaviour:
           time: 1
           value: 1
           inSlope: 1
-          outSlope: 1
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
@@ -197,27 +206,27 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.2467344
-          value: 0.30838323
-          inSlope: 1.8434166
-          outSlope: 1.8434166
+          time: 0.28730512
+          value: 0.30841124
+          inSlope: 0.44344938
+          outSlope: 0.44344938
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.6444122
-          value: 0.5868263
+          time: 0.36610168
+          value: 0.5839416
           inSlope: 1
-          outSlope: 0
+          outSlope: 1
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.98838896
-          value: 0.5778443
-          inSlope: 0
+          time: 1
+          value: 1
+          inSlope: 1
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
@@ -227,7 +236,7 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
   blue:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value:
       <length>k__BackingField: 2
       m_Loop: 0
