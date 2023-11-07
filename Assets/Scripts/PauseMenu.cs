@@ -9,8 +9,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingsEmpty;
     public GameObject menuEmpty;
-    public GameObject videoEmpty;
-    public GameObject audioEmpty;
 
     public AudioSource menuSelect;
     public AudioSource menuBack;
@@ -41,9 +39,6 @@ public class PauseMenu : MonoBehaviour
     {
         menuEmpty.SetActive(true);
         settingsEmpty.SetActive(false);
-        videoEmpty.SetActive(false);
-        audioEmpty.SetActive(false);
-
         activeMenu.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -77,19 +72,11 @@ public class PauseMenu : MonoBehaviour
         menuBack.Play();
         menuEmpty.SetActive(true);
         settingsEmpty.SetActive(false);
-        activeMenu = menuEmpty; // Set the active menu to the Pause menu
+        activeMenu = menuEmpty; // Set the active menu to the Main menu
         Debug.Log("Back");
     }
 
-    public void backSettings()
-    {
-        menuSelect.Play();
-        videoEmpty.SetActive(false);
-        audioEmpty.SetActive(false);
-        settingsEmpty.SetActive(true);
-        activeMenu = settingsEmpty; // Set the active menu to the Settings menu from audioEmpty or videoEmpty
-        Debug.Log("Settings");
-    }
+    
 
     public void settings()
     {
@@ -98,24 +85,5 @@ public class PauseMenu : MonoBehaviour
         settingsEmpty.SetActive(true);
         activeMenu = settingsEmpty; // Set the active menu to the Settings menu
         Debug.Log("Settings");
-    }
-
-
-    public void audio()
-    {
-        menuSelect.Play();
-        settingsEmpty.SetActive(false);
-        audioEmpty.SetActive(true);
-        activeMenu = audioEmpty; // Set the active menu to the Audio menu
-        Debug.Log("Audio");
-    }
-
-    public void video()
-    {
-        menuSelect.Play();
-        settingsEmpty.SetActive(false);
-        videoEmpty.SetActive(true);
-        activeMenu = videoEmpty; // Set the active menu to the Video menu
-        Debug.Log("Video");
     }
 }
