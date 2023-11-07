@@ -13,6 +13,12 @@ TagManager:
   - Ground
   - Enemy
   - jumpSurface
+  - CUBO
+  - TochaGrande
+  - Checkpoint
+  - Coletavel
+  - ClimbableWall
+  - ClimbableEdge
   layers:
   - Default
   - TransparentFX
@@ -33,8 +39,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Parede
+  - Aresta
   - 
   - Canvas
   - 
