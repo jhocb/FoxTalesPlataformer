@@ -39,7 +39,8 @@ public class Movimento3DAtualizado : MonoBehaviour
     private void Update()
     {
         // Verifique se o personagem está no chão
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f);
+        Debug.DrawRay(transform.position, Vector3.down, Color.green);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f);
 
         // Movimento lateral
         float moveX = Input.GetAxis("Horizontal");
