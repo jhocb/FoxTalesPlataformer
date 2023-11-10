@@ -1973,6 +1973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf1b47b3b9b40346b3ff5a0ed521eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 5
 --- !u!65 &304282652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2101,7 +2102,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &327908897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5989,6 +5990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf1b47b3b9b40346b3ff5a0ed521eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 5
 --- !u!54 &1048932704
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10646,6 +10648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf1b47b3b9b40346b3ff5a0ed521eee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdown: 5
 --- !u!65 &1774162827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11727,7 +11730,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.049860954, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.4404367, g: 0.41037738, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -12227,7 +12230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2130730697
 MonoBehaviour:
   m_ObjectHideFlags: 0
