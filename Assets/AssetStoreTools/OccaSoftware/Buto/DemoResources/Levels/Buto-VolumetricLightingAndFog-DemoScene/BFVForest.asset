@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Value: 0.493
   lightIntensity:
     m_OverrideState: 1
-    m_Value: 1.99
+    m_Value: 19.3
   shadowIntensity:
     m_OverrideState: 1
     m_Value: 1.5
@@ -80,7 +80,7 @@ MonoBehaviour:
     m_Value: 68.91
   attenuationBoundarySize:
     m_OverrideState: 1
-    m_Value: 2.46
+    m_Value: 13
   colorRamp:
     m_OverrideState: 0
     m_Value: {fileID: 0}
