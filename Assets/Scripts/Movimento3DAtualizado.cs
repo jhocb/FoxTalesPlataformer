@@ -17,6 +17,7 @@ public class Movimento3DAtualizado : MonoBehaviour
     public float dashDuration = 0.5f;
     [SerializeField]
     private bool isDashing = false;
+    public bool hasUsedSideDash = false;
 
     // Cima
     [SerializeField]
@@ -40,8 +41,11 @@ public class Movimento3DAtualizado : MonoBehaviour
     {
         // Verifique se o personagem está no chão
         int groundLayerMask = 1 << LayerMask.NameToLayer("IgnoreGround");
+        int ignoreLayer1 = 1 << LayerMask.NameToLayer("Wall");
+        int ignoreLayersMask = ignoreLayer1 | groundLayerMask; // Combina as camadas a serem ignoradas
+
         Debug.DrawRay(transform.position, Vector3.down, Color.green);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, ~groundLayerMask);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, ~ignoreLayersMask);
 
         // Movimento lateral
         float moveX = Input.GetAxis("Horizontal");
@@ -63,7 +67,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         // Dash lateral com um botão separado
-        if (Input.GetKeyDown(KeyCode.J) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
         {
             Vector3 dashDirection = transform.forward; // Direção para a qual o personagem está olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
@@ -89,11 +93,13 @@ public class Movimento3DAtualizado : MonoBehaviour
         if (isGrounded)
         {
             hasUsedUpwardDash = false; // Redefinir ao tocar o chão
+            hasUsedSideDash = false;
         }
     }
 
     private IEnumerator Dash(Vector3 direction)
     {
+        hasUsedUpwardDash = true;
         isDashing = true;
         float startTime = Time.time;
 
