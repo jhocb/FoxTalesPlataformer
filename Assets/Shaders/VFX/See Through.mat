@@ -45,7 +45,7 @@ Material:
     - _Size: 0
     - _Smoothness: 0.383
     m_Colors:
-    - _Position: {r: 0.50011486, g: 0.59611064, b: 10.1288, a: 0}
+    - _Position: {r: 0.49970803, g: 0.6048015, b: 9.511891, a: 0}
     - _Tint: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6005128376074301395
