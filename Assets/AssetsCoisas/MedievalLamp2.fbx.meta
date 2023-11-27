@@ -3,7 +3,17 @@ guid: 7784f80205782724fb13d6157fb1d049
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DetalhesLamp
+    second: {fileID: 2100000, guid: 185d8c2842eff7b49a375cf44fd280d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lamparina
+    second: {fileID: 2100000, guid: 78dc3912376a60542b52db12b93c2609, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
