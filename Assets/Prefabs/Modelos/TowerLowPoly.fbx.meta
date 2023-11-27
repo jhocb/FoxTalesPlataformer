@@ -3,7 +3,17 @@ guid: 7c1c9cd925d6bd442962284ed62da490
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chaos
+    second: {fileID: 2100000, guid: 05c827cfdc8208e4dbd5267b71e25757, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EscadasETC
+    second: {fileID: 2100000, guid: 37731012091d6fe418509f8603ec71c3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
