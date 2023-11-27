@@ -17,6 +17,7 @@ public class Movimento3DAtualizado : MonoBehaviour
     public float dashDuration = 0.5f;
     [SerializeField]
     private bool isDashing = false;
+    public bool hasUsedSideDash = false;
 
     // Cima
     [SerializeField]
@@ -29,8 +30,8 @@ public class Movimento3DAtualizado : MonoBehaviour
     //Animacoes
     public Animator anim;
     // Escalada
-   //public Transform climbDetection; // Referência ao objeto de detecção de colisões
-   //public LayerMask climbableLayer; // A LayerMask para identificar as superfícies escaláveis
+   //public Transform climbDetection; // Referï¿½ncia ao objeto de detecï¿½ï¿½o de colisï¿½es
+   //public LayerMask climbableLayer; // A LayerMask para identificar as superfï¿½cies escalï¿½veis
    //public float climbSpeed = 10f; // Velocidade de escalada
    
     private void Awake()
@@ -41,10 +42,13 @@ public class Movimento3DAtualizado : MonoBehaviour
 
     private void Update()
     {
-        // Verifique se o personagem está no chão
+        // Verifique se o personagem estï¿½ no chï¿½o
         int groundLayerMask = 1 << LayerMask.NameToLayer("IgnoreGround");
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f, ~groundLayerMask);
-        Debug.DrawRay(transform.position, Vector3.down, Color.green, 0.5f);
+        int ignoreLayer1 = 1 << LayerMask.NameToLayer("Wall");
+        int ignoreLayersMask = ignoreLayer1 | groundLayerMask; // Combina as camadas a serem ignoradas
+
+        Debug.DrawRay(transform.position, Vector3.down, Color.green);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, ~ignoreLayersMask);
 
         // Movimento lateral
         float moveX = Input.GetAxis("Horizontal");
@@ -52,10 +56,10 @@ public class Movimento3DAtualizado : MonoBehaviour
         Vector3 moveDirection = new Vector3(moveX, 0f, moveZ).normalized;
         if (moveDirection != Vector3.zero)
         {
-            // Rotacionar o personagem na direção do movimento
+            // Rotacionar o personagem na direï¿½ï¿½o do movimento
             transform.forward = moveDirection;
         }
-        // Aplicar força para movimento
+        // Aplicar forï¿½a para movimento
         Vector3 moveVelocity = moveDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y; // Manter a componente vertical da velocidade
         rb.velocity = moveVelocity;
@@ -77,14 +81,14 @@ public class Movimento3DAtualizado : MonoBehaviour
             anim.SetTrigger("JumpAtt");
             anim.SetBool("isGrounded", false);
         }
-        // Dash lateral com um botão separado
+        // Dash lateral com um botï¿½o separado
         if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashSide");
-            Vector3 dashDirection = transform.forward; // Direção para a qual o personagem está olhando
+            Vector3 dashDirection = transform.forward; // Direï¿½ï¿½o para a qual o personagem estï¿½ olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
         }
-        // Dash para cima com um botão separado
+        // Dash para cima com um botï¿½o separado
         if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashUp");
@@ -93,7 +97,7 @@ public class Movimento3DAtualizado : MonoBehaviour
         /*if (moveDirection != Vector3.zero)
         {
             float rayDistance = 1.0f;
-            // Verifique se o jogador está se movendo na direção da parede
+            // Verifique se o jogador estï¿½ se movendo na direï¿½ï¿½o da parede
             if (Physics.Raycast(transform.position, moveDirection, out RaycastHit hit, rayDistance, climbableLayer))
             {
                 Debug.Log("AGARRADO");
@@ -106,9 +110,8 @@ public class Movimento3DAtualizado : MonoBehaviour
         if (isGrounded)
         {
             anim.SetFloat("Velocity", moveVelocity.magnitude);
-            hasUsedUpwardDash = false; // Redefinir ao tocar o chão
-            anim.SetBool("Jump", false);
-            anim.SetBool("isGrounded", true);
+            hasUsedUpwardDash = false; // Redefinir ao tocar o chï¿½o
+            hasUsedSideDash = false;
         }
 
 
@@ -116,6 +119,7 @@ public class Movimento3DAtualizado : MonoBehaviour
 
     private IEnumerator Dash(Vector3 direction)
     {
+        hasUsedUpwardDash = true;
         isDashing = true;
         float startTime = Time.time;
 
