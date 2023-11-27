@@ -74,8 +74,8 @@ public class Movimento3DAtualizado : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            anim.SetBool("Jump", true);
-
+            anim.SetTrigger("JumpAtt");
+            anim.SetBool("isGrounded", false);
         }
         // Dash lateral com um botão separado
         if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
@@ -107,6 +107,8 @@ public class Movimento3DAtualizado : MonoBehaviour
         {
             anim.SetFloat("Velocity", moveVelocity.magnitude);
             hasUsedUpwardDash = false; // Redefinir ao tocar o chão
+            anim.SetBool("Jump", false);
+            anim.SetBool("isGrounded", true);
         }
 
 
