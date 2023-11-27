@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Climbing
 {
 
-    [RequireComponent(typeof(ThirdPersonController))]
+    //[RequireComponent(typeof(ThirdPersonController))]
     public class DetectionCharacterController : MonoBehaviour
     {
         public bool showDebug = true;

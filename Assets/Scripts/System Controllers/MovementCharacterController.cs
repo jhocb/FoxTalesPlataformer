@@ -6,7 +6,7 @@ namespace Climbing
 {
     public enum MovementState { Walking, Running }
 
-    [RequireComponent(typeof(ThirdPersonController))]
+    //  [RequireComponent(typeof(ThirdPersonController))]
     public class MovementCharacterController : MonoBehaviour
     {
         public bool showDebug = true;

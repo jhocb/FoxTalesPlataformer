@@ -5,12 +5,12 @@ using UnityEngine;
 
 namespace Climbing
 {
-    [RequireComponent(typeof(InputCharacterController))]
-    [RequireComponent(typeof(MovementCharacterController))]
-    [RequireComponent(typeof(AnimationCharacterController))]
-    [RequireComponent(typeof(DetectionCharacterController))]
-    [RequireComponent(typeof(CameraController))]
-    [RequireComponent(typeof(VaultingController))]
+    //[RequireComponent(typeof(InputCharacterController))]
+    //[RequireComponent(typeof(MovementCharacterController))]
+    //[RequireComponent(typeof(AnimationCharacterController))]
+    //[RequireComponent(typeof(DetectionCharacterController))]
+    //[RequireComponent(typeof(CameraController))]
+    //[RequireComponent(typeof(VaultingController))]
 
     public class ThirdPersonController : MonoBehaviour
     {

@@ -26,22 +26,25 @@ public class Movimento3DAtualizado : MonoBehaviour
     public float upwardDashSpeed = 10f;
     public float upwardDashDuration = 0.5f;
 
+    //Animacoes
+    public Animator anim;
     // Escalada
-    public Transform climbDetection; // Referência ao objeto de detecção de colisões
-    public LayerMask climbableLayer; // A LayerMask para identificar as superfícies escaláveis
-    public float climbSpeed = 10f; // Velocidade de escalada
-
+   //public Transform climbDetection; // Referência ao objeto de detecção de colisões
+   //public LayerMask climbableLayer; // A LayerMask para identificar as superfícies escaláveis
+   //public float climbSpeed = 10f; // Velocidade de escalada
+   
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
         // Verifique se o personagem está no chão
         int groundLayerMask = 1 << LayerMask.NameToLayer("IgnoreGround");
-        Debug.DrawRay(transform.position, Vector3.down, Color.green);
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, ~groundLayerMask);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.5f, ~groundLayerMask);
+        Debug.DrawRay(transform.position, Vector3.down, Color.green, 0.5f);
 
         // Movimento lateral
         float moveX = Input.GetAxis("Horizontal");
@@ -56,24 +59,38 @@ public class Movimento3DAtualizado : MonoBehaviour
         Vector3 moveVelocity = moveDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y; // Manter a componente vertical da velocidade
         rb.velocity = moveVelocity;
-
+        // Correr
+        if (isGrounded && Input.GetKey(KeyCode.LeftShift))
+        {
+            anim.SetBool("Run", true);
+            moveSpeed = 8f;
+        }
+        else 
+        { 
+        anim.SetBool("Run", false);
+        moveSpeed = 5f;
+        }
         // Pular
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            anim.SetBool("Jump", true);
+
         }
         // Dash lateral com um botão separado
-        if (Input.GetKeyDown(KeyCode.J) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
         {
+            anim.SetTrigger("DashSide");
             Vector3 dashDirection = transform.forward; // Direção para a qual o personagem está olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
         }
         // Dash para cima com um botão separado
         if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
+            anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
         }
-        if (moveDirection != Vector3.zero)
+        /*if (moveDirection != Vector3.zero)
         {
             float rayDistance = 1.0f;
             // Verifique se o jogador está se movendo na direção da parede
@@ -83,13 +100,16 @@ public class Movimento3DAtualizado : MonoBehaviour
                 // Inicie a escalada automaticamente
                 StartCoroutine(Climb(hit.point, hit.normal));
             }
-        }
-        Debug.DrawRay(transform.position, moveDirection * climbSpeed * Time.deltaTime, Color.red); // Desenhe o Raycast
+        }*/
+        //Debug.DrawRay(transform.position, moveDirection * climbSpeed * Time.deltaTime, Color.red); // Desenhe o Raycast
 
         if (isGrounded)
         {
+            anim.SetFloat("Velocity", moveVelocity.magnitude);
             hasUsedUpwardDash = false; // Redefinir ao tocar o chão
         }
+
+
     }
 
     private IEnumerator Dash(Vector3 direction)
@@ -124,7 +144,7 @@ public class Movimento3DAtualizado : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    private IEnumerator Climb(Vector3 climbPoint, Vector3 wallNormal)
+    /*private IEnumerator Climb(Vector3 climbPoint, Vector3 wallNormal)
     {
         float startTime = Time.time;
 
@@ -137,5 +157,5 @@ public class Movimento3DAtualizado : MonoBehaviour
         }
 
         rb.velocity = Vector3.zero;
-    }
+    }*/
 }
