@@ -43,11 +43,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Density: 43.28
+    - _Density: 45.77
     - _FlowDirection: 0.23
     - _FlowSpeed: 0.08
-    - _FoamSpeed: 4.11
-    - _FoamThickness: 5.67
+    - _FoamSpeed: 6.49
+    - _FoamThickness: 8.85
     - _MultiplyValor: 2.37
     - _QueueControl: 0
     - _QueueOffset: 0

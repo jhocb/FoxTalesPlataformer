@@ -5,8 +5,8 @@ using UnityEngine;
 public class Movimento3DAtualizado : MonoBehaviour
 {
     // Movimento
-    public float moveSpeed = 5f;
-    public float jumpForce = 7f;
+    public float moveSpeed;
+    public float jumpForce;
     private Rigidbody rb;
     public bool isGrounded;
     public bool freeze;
@@ -84,8 +84,7 @@ public class Movimento3DAtualizado : MonoBehaviour
         else 
         { 
         anim.SetBool("Run", false);
-        moveSpeed = 5f;
-        trailVFX.SetActive(false);
+        moveSpeed = 4f;
         }
         // Pular
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
