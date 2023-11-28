@@ -19,6 +19,7 @@ TagManager:
   - Coletavel
   - ClimbableWall
   - ClimbableEdge
+  - Perigo
   layers:
   - Default
   - TransparentFX
