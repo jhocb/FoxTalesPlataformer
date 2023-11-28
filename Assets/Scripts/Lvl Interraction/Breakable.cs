@@ -12,4 +12,13 @@ public class Breakable : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "TriggerDash")
+        {
+            Instantiate(destroyedVersion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+
 }
