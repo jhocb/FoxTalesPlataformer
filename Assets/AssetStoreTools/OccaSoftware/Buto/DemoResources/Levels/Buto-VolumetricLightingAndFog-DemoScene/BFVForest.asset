@@ -49,11 +49,11 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 500
   analyticFogEnabled:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 1
   maxDistanceAnalytic:
-    m_OverrideState: 0
-    m_Value: 100
+    m_OverrideState: 1
+    m_Value: 1046.9
   temporalAntiAliasingEnabled:
     m_OverrideState: 0
     m_Value: 1
@@ -62,7 +62,7 @@ MonoBehaviour:
     m_Value: 0.99
   fogMaskBlendMode:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   fogDensity:
     m_OverrideState: 1
     m_Value: 0.9
@@ -74,13 +74,13 @@ MonoBehaviour:
     m_Value: 46.9
   shadowIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 6.16
   baseHeight:
     m_OverrideState: 1
-    m_Value: 99.7
+    m_Value: 48.7
   attenuationBoundarySize:
     m_OverrideState: 1
-    m_Value: 24
+    m_Value: 97.4
   colorRamp:
     m_OverrideState: 0
     m_Value: {fileID: 0}
