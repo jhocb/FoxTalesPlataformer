@@ -17,7 +17,7 @@ public class FallingPlat : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.name == "PlaceholderChar")
+        if (collider.gameObject.name == "PlayerMesh")
         {
             StartCoroutine(StartFallingCountdown());
         }
