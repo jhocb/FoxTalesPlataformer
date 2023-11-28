@@ -30,6 +30,9 @@ public class Movimento3DAtualizado : MonoBehaviour
 
     //Animacoes
     public Animator anim;
+
+    //VFX
+    public GameObject trailVFX;
     // Escalada
    //public Transform climbDetection; // Refer�ncia ao objeto de detec��o de colis�es
    //public LayerMask climbableLayer; // A LayerMask para identificar as superf�cies escal�veis
@@ -64,6 +67,9 @@ public class Movimento3DAtualizado : MonoBehaviour
             // Rotacionar o personagem na dire��o do movimento
             transform.forward = moveDirection;
         }
+        else
+            trailVFX.SetActive(false);
+
         // Aplicar for�a para movimento
         Vector3 moveVelocity = moveDirection * moveSpeed;
         moveVelocity.y = rb.velocity.y; // Manter a componente vertical da velocidade
@@ -73,11 +79,13 @@ public class Movimento3DAtualizado : MonoBehaviour
         {
             anim.SetBool("Run", true);
             moveSpeed = 8f;
+            trailVFX.SetActive(true);
         }
         else 
         { 
         anim.SetBool("Run", false);
         moveSpeed = 5f;
+        trailVFX.SetActive(false);
         }
         // Pular
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -92,12 +100,14 @@ public class Movimento3DAtualizado : MonoBehaviour
             anim.SetTrigger("DashSide");
             Vector3 dashDirection = transform.forward; // Dire��o para a qual o personagem est� olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
+            trailVFX.SetActive(true);
         }
         // Dash para cima com um bot�o separado
         if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
+            trailVFX.SetActive(true);
         }
         /*if (moveDirection != Vector3.zero)
         {
