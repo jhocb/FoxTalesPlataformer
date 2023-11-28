@@ -10,6 +10,7 @@ public class Movimento3DAtualizado : MonoBehaviour
     private Rigidbody rb;
     public bool isGrounded;
     public bool freeze;
+    public bool isGroundedAnim;
 
     // DASH
     // Lado
@@ -37,7 +38,7 @@ public class Movimento3DAtualizado : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -49,6 +50,10 @@ public class Movimento3DAtualizado : MonoBehaviour
 
         Debug.DrawRay(transform.position, Vector3.down, Color.green);
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1f, ~ignoreLayersMask);
+
+        isGroundedAnim = Physics.Raycast(transform.position, Vector3.down, 0.5f, ~ignoreLayersMask);
+        Debug.DrawRay(transform.position, Vector3.down, Color.white);
+
 
         // Movimento lateral
         float moveX = Input.GetAxis("Horizontal");
@@ -66,32 +71,32 @@ public class Movimento3DAtualizado : MonoBehaviour
         // Correr
         if (isGrounded && Input.GetKey(KeyCode.LeftShift))
         {
-            //anim.SetBool("Run", true);
+            anim.SetBool("Run", true);
             moveSpeed = 8f;
         }
         else 
         { 
-        //anim.SetBool("Run", false);
+        anim.SetBool("Run", false);
         moveSpeed = 5f;
         }
         // Pular
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            //anim.SetTrigger("JumpAtt");
-            //anim.SetBool("isGrounded", false);
+            anim.SetTrigger("JumpAtt");
+            anim.SetBool("isGrounded", false);
         }
         // Dash lateral com um bot�o separado
         if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
         {
-            //anim.SetTrigger("DashSide");
+            anim.SetTrigger("DashSide");
             Vector3 dashDirection = transform.forward; // Dire��o para a qual o personagem est� olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
         }
         // Dash para cima com um bot�o separado
         if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
-            //anim.SetTrigger("DashUp");
+            anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
         }
         /*if (moveDirection != Vector3.zero)
@@ -109,10 +114,19 @@ public class Movimento3DAtualizado : MonoBehaviour
 
         if (isGrounded)
         {
-            //anim.SetFloat("Velocity", moveVelocity.magnitude);
+            anim.SetFloat("Velocity", moveVelocity.magnitude);
             hasUsedUpwardDash = false; // Redefinir ao tocar o ch�o
             hasUsedSideDash = false;
         }
+
+
+        if (isGroundedAnim)
+        {
+            anim.SetBool("isGrounded", true);
+        }
+        else
+            anim.SetBool("isGrounded", false);
+
 
 
     }
