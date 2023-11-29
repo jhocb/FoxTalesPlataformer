@@ -12,7 +12,7 @@ public class Movimento3DAtualizado : MonoBehaviour
     public bool freeze;
     public bool isGroundedAnim;
     public bool isRunning;
-    public Vector3 moveDirection;
+    public bool isWalking;
 
     // DASH
     // Lado
@@ -69,8 +69,11 @@ public class Movimento3DAtualizado : MonoBehaviour
         if (moveDirection != Vector3.zero)
         {
             // Rotacionar o personagem na dire��o do movimento
+            isWalking = true;
             transform.forward = moveDirection;
         }
+        else
+            isWalking = false;
         
         // Aplicar for�a para movimento
         Vector3 moveVelocity = moveDirection * moveSpeed;
