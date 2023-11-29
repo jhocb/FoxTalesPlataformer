@@ -74,7 +74,7 @@ public class PauseMenu : MonoBehaviour
 
     public void back()
     {
-        menuBack.Play();
+        //menuBack.Play();
         menuEmpty.SetActive(true);
         settingsEmpty.SetActive(false);
         activeMenu = menuEmpty; // Set the active menu to the Pause menu
@@ -83,7 +83,7 @@ public class PauseMenu : MonoBehaviour
 
     public void backSettings()
     {
-        menuSelect.Play();
+        //menuSelect.Play();
         videoEmpty.SetActive(false);
         audioEmpty.SetActive(false);
         settingsEmpty.SetActive(true);
@@ -93,7 +93,7 @@ public class PauseMenu : MonoBehaviour
 
     public void settings()
     {
-        menuSelect.Play();
+        //menuSelect.Play();
         menuEmpty.SetActive(false);
         settingsEmpty.SetActive(true);
         activeMenu = settingsEmpty; // Set the active menu to the Settings menu
@@ -103,7 +103,7 @@ public class PauseMenu : MonoBehaviour
 
     public void audio()
     {
-        menuSelect.Play();
+        //menuSelect.Play();
         settingsEmpty.SetActive(false);
         audioEmpty.SetActive(true);
         activeMenu = audioEmpty; // Set the active menu to the Audio menu
@@ -112,7 +112,7 @@ public class PauseMenu : MonoBehaviour
 
     public void video()
     {
-        menuSelect.Play();
+        //menuSelect.Play();
         settingsEmpty.SetActive(false);
         videoEmpty.SetActive(true);
         activeMenu = videoEmpty; // Set the active menu to the Video menu

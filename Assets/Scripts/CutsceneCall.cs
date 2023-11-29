@@ -20,7 +20,7 @@ public class CutsceneCall : MonoBehaviour
     {
         if(dashCount == 3)
         {
-            SceneManager.LoadScene("Cutscene");
+            SceneManager.LoadScene("Menu");
         }
     }
 

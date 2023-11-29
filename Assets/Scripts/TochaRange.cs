@@ -33,7 +33,7 @@ public class TochaRange : MonoBehaviour
 
         if(pointLight.range == 0)
         {
-            checkPoint.VoltouCheckpoint();
+            //checkPoint.VoltouCheckpoint();
             pointLight.range = startingRange;
         }
 
