@@ -11,6 +11,8 @@ public class Movimento3DAtualizado : MonoBehaviour
     public bool isGrounded;
     public bool freeze;
     public bool isGroundedAnim;
+    public bool isRunning;
+    public Vector3 moveDirection;
 
     // DASH
     // Lado
@@ -79,12 +81,14 @@ public class Movimento3DAtualizado : MonoBehaviour
         {
             anim.SetBool("Run", true);
             moveSpeed = 8f;
+            isRunning = true;
             //trailVFX.SetActive(true);
         }
         else 
         { 
         anim.SetBool("Run", false);
         moveSpeed = 4f;
+        isRunning = false;
         }
         // Pular
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
