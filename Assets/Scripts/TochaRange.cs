@@ -8,11 +8,15 @@ public class TochaRange : MonoBehaviour
     public Light pointLight;
     public int startingRange;
     public float valueDecrease;
+    public GameObject lightPlayer;
+    public CheckPoint checkPoint;
 
     private void Start()
     {
-        pointLight = gameObject.GetComponent<Light>();
         pointLight.range = startingRange;
+        lightPlayer.SetActive(false);
+        checkPoint = gameObject.GetComponent<CheckPoint>();
+        
     }
 
     private void Update()
@@ -26,6 +30,13 @@ public class TochaRange : MonoBehaviour
         {
             print("esta no range");
         }
+
+        if(pointLight.range == 0)
+        {
+            checkPoint.VoltouCheckpoint();
+            pointLight.range = startingRange;
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -44,4 +55,18 @@ public class TochaRange : MonoBehaviour
             playerInRange = false;
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "InicioTocha")
+        {
+            lightPlayer.SetActive(true);
+        }
+        if (other.name == "FinalTocha")
+        {
+            lightPlayer.SetActive(false);
+            valueDecrease = 0;
+        }
+    }
+
 }
