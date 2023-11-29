@@ -31,7 +31,7 @@ public class PuzzleManager : MonoBehaviour
 
     public IEnumerator KeyE()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         Debug.Log("Apertou E");
         puzzleObjects[currentIndex].SetActive(true);
         currentIndex++;

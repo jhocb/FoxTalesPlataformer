@@ -22,7 +22,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            player.transform.position = vectorPoint;
+            VoltouCheckpoint();
         }
     }
 
@@ -34,8 +34,14 @@ public class CheckPoint : MonoBehaviour
 
         if (other.CompareTag("Perigo"))
         {
-            player.transform.position = vectorPoint;
+            VoltouCheckpoint();
         }
+    }
+
+
+    public void VoltouCheckpoint()
+    {
+        player.transform.position = vectorPoint;
     }
 
 

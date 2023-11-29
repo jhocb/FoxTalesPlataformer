@@ -9,11 +9,11 @@ public class Puzzle1 : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("CUBO") && Input.GetKeyDown(KeyCode.E) && puzzleManager.currentIndex == 0 && puzzleManager.complete == false)
+        if (other.CompareTag("CUBO") && Input.GetKeyUp(KeyCode.E) && puzzleManager.currentIndex == 0 && puzzleManager.complete == false)
         {
             puzzleManager.StartCoroutine(puzzleManager.KeyE());
         }
-        else if (other.CompareTag("CUBO") && Input.GetKeyDown(KeyCode.E) && puzzleManager.currentIndex != 0 && puzzleManager.complete == false)
+        else if (other.CompareTag("CUBO") && Input.GetKeyUp(KeyCode.E) && puzzleManager.currentIndex != 0 && puzzleManager.complete == false)
         {
             puzzleManager.DeactivateAllObjects();
         }
