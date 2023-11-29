@@ -18,9 +18,22 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         ConfigureAudioSources();
-
+        movPlayer = gameObject.GetComponent<Movimento3DAtualizado>();
         // Inicie a reprodução da música na área inicial
         PlayRandomMusicTrack(area1MusicTracks);
+        PlayEnvironmentSound(environmentSounds[0]);
+    }
+    private void Update()
+    {
+        Debug.Log(movPlayer.isWalking);
+
+        if (movPlayer.isWalking && movPlayer.isGrounded)
+        {
+            PlayFootsteps();
+        }
+        else
+            StopFootsteps();
+
     }
 
     void ConfigureAudioSources()
@@ -31,24 +44,23 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.loop = true;
     }
 
-    public void PlayFootsteps(bool run)
+    public void PlayFootsteps()
     {
         //isRunning = run;
 
-        if (footstepsAudioSource != null && footstepsAudioSource.isActiveAndEnabled && movPlayer.isWalking == true)
+        if (footstepsAudioSource != null && footstepsAudioSource.isActiveAndEnabled && !footstepsAudioSource.isPlaying)
         {
-            AudioClip[] footstepsSounds = movPlayer.isRunning ? runningSounds : walkingSounds;
+            //AudioClip[] footstepsSounds = movPlayer.isRunning ? runningSounds : walkingSounds;
 
-            int randomIndex = Random.Range(0, footstepsSounds.Length);
-            footstepsAudioSource.clip = footstepsSounds[randomIndex];
-            footstepsAudioSource.pitch = movPlayer.isRunning ? 1.5f : 1.0f;
+            //int randomIndex = Random.Range(0, footstepsSounds.Length);
+            footstepsAudioSource.clip = walkingSounds[0];
             footstepsAudioSource.Play();
         }
     }
 
     public void StopFootsteps()
     {
-        if (footstepsAudioSource != null && footstepsAudioSource.isActiveAndEnabled && movPlayer.isWalking == false)
+        if (footstepsAudioSource != null && footstepsAudioSource.isActiveAndEnabled)
         {
             footstepsAudioSource.Stop();
         }
@@ -73,33 +85,4 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        // Verifica se o jogador entrou em uma nova área
-        if (other.CompareTag("Area1"))
-        {
-            // Muda a música e o som ambiente para a Área 1
-            PlayRandomMusicTrack(area1MusicTracks);
-            PlayEnvironmentSound(environmentSounds[0]);
-        }
-        else if (other.CompareTag("Area2"))
-        {
-            // Muda a música e o som ambiente para a Área 2
-            PlayRandomMusicTrack(area2MusicTracks);
-            PlayEnvironmentSound(environmentSounds[1]);
-        }
-        else if (other.CompareTag("Area3"))
-        {
-            // Muda a música e o som ambiente para a Área 2
-            PlayRandomMusicTrack(area2MusicTracks);
-            PlayEnvironmentSound(environmentSounds[2]);
-        }
-        else if (other.CompareTag("Area4"))
-        {
-            // Muda a música e o som ambiente para a Área 2
-            PlayRandomMusicTrack(area2MusicTracks);
-            PlayEnvironmentSound(environmentSounds[3]);
-        }
-        // Adicione mais verificações de área conforme necessário
-    }
 }
