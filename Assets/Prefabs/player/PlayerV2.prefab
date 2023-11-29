@@ -9512,6 +9512,8 @@ MonoBehaviour:
   isGrounded: 0
   freeze: 0
   isGroundedAnim: 0
+  isRunning: 0
+  moveDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 9
   dashDuration: 0.7
   isDashing: 0
@@ -9668,6 +9670,7 @@ MonoBehaviour:
   startingRange: 9
   valueDecrease: 0.5
   lightPlayer: {fileID: 0}
+  checkPoint: {fileID: 0}
 --- !u!1 &6142842056000990896
 GameObject:
   m_ObjectHideFlags: 0
@@ -9934,6 +9937,7 @@ GameObject:
   - component: {fileID: 6957033241424259341}
   - component: {fileID: 3500909882272125208}
   - component: {fileID: 7569952272421426212}
+  - component: {fileID: 3399080572306893249}
   m_Layer: 10
   m_Name: PlayerMesh
   m_TagString: CUBO
@@ -10080,6 +10084,8 @@ MonoBehaviour:
   isGrounded: 0
   freeze: 0
   isGroundedAnim: 0
+  isRunning: 0
+  moveDirection: {x: 0, y: 0, z: 0}
   dashSpeed: 9
   dashDuration: 0.7
   isDashing: 0
@@ -10119,6 +10125,23 @@ MonoBehaviour:
   player: {fileID: 0}
   checkPoints: []
   vectorPoint: {x: 0, y: 0, z: 0}
+--- !u!114 &3399080572306893249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646622005743547550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d69d447fbdcaa42852d177f4bb0c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointLight: {fileID: 8798312352976514222}
+  startingRange: 10
+  valueDecrease: 0.1
+  lightPlayer: {fileID: 5524949926895539209}
+  checkPoint: {fileID: 0}
 --- !u!1 &6676276358659710876
 GameObject:
   m_ObjectHideFlags: 0

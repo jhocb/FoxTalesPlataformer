@@ -45,14 +45,14 @@ public class audioController : MonoBehaviour
     {
         if (inputController != null)
         {
-            if (inputController.moveDirection.magnitude > 0.9f && !isAudioPlaying)
+            if (inputController.moveSpeed > 0.9f && !isAudioPlaying)
             {
                 PlayRandomFootstepSound(); // No need to pass pitch here
             }
-            else if (inputController.moveDirection.magnitude <= 0.9f && isAudioPlaying)
+            /*else if (inputController.moveDirection.magnitude <= 0.9f && isAudioPlaying)
             {
                 StopFootstepSound();
-            }
+            }*/
         }
     }
 }
