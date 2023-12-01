@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Climbing
 {
-    [RequireComponent(typeof(ThirdPersonController))]
-    [RequireComponent(typeof(Animator))]
+    //[RequireComponent(typeof(ThirdPersonController))]
+    //[RequireComponent(typeof(Animator))]
     public class AnimationCharacterController : MonoBehaviour
     {
         private ThirdPersonController controller;

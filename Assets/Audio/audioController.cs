@@ -16,11 +16,11 @@ public class audioController : MonoBehaviour
 
     private bool isAudioPlaying = false;
 
-    private InputCharacterController inputController; // Reference to InputCharacterController
+    private Movimento3DAtualizado inputController; // Reference to InputCharacterController
 
     void Start()
     {
-        inputController = GetComponent<InputCharacterController>(); // Get the reference
+        inputController = GetComponent<Movimento3DAtualizado>(); // Get the reference
     }
 
     public void PlayRandomFootstepSound()
@@ -29,7 +29,7 @@ public class audioController : MonoBehaviour
     {
         int randomIndex = Random.Range(0, footstepSounds.Length);
         footstepsAudioSource.clip = footstepSounds[randomIndex];
-        footstepsAudioSource.pitch = inputController.run ? runningPitch : walkingPitch; // Set the pitch based on run variable
+        footstepsAudioSource.pitch = inputController.isRunning ? runningPitch : walkingPitch; // Set the pitch based on run variable
         footstepsAudioSource.Play();
         isAudioPlaying = true;
     }
@@ -45,14 +45,14 @@ public class audioController : MonoBehaviour
     {
         if (inputController != null)
         {
-            if (inputController.movement.magnitude > 0.9f && !isAudioPlaying)
+            if (inputController.moveSpeed > 0.9f && !isAudioPlaying)
             {
                 PlayRandomFootstepSound(); // No need to pass pitch here
             }
-            else if (inputController.movement.magnitude <= 0.9f && isAudioPlaying)
+            /*else if (inputController.moveDirection.magnitude <= 0.9f && isAudioPlaying)
             {
                 StopFootstepSound();
-            }
+            }*/
         }
     }
 }
