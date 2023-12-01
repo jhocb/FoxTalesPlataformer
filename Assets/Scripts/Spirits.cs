@@ -32,7 +32,7 @@ public class Spirits : MonoBehaviour
         yield return new WaitForSeconds(erodeDelay);
 
         float t = 0;
-        while (t < 1)
+        while (t < 3)
         {
             t += erodeRate;
             skmR.material.SetFloat("_Erode", t);
