@@ -44,5 +44,13 @@ public class CheckPoint : MonoBehaviour
         player.transform.position = vectorPoint;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Perigo"))
+        {
+            VoltouCheckpoint();
+        }
+    }
+
 
 }
