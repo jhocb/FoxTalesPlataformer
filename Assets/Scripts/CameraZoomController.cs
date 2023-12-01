@@ -11,6 +11,8 @@ public class CameraZoomController : MonoBehaviour
     public float newZ;
     public float originalY;
     public float newY;
+    public float originalX;
+    public float newX;
     public Vector3 originalRotation;
     public Vector3 newRotation;
     // Start is called before the first frame update
@@ -32,7 +34,9 @@ public class CameraZoomController : MonoBehaviour
         if (other.CompareTag("CUBO"))
         {
             cameraFollow.distanceZ = newZ;
-            cameraFollow.distanceZ = newY;
+            cameraFollow.distanceY = newY;
+            cameraFollow.distanceX = newX;
+
 
             // Crie uma nova instância de Quaternion com os valores de rotação desejados
             Quaternion newRotationQuaternion = Quaternion.Euler(newRotation);
@@ -55,7 +59,8 @@ public class CameraZoomController : MonoBehaviour
         if (other.CompareTag("CUBO"))
         {
             cameraFollow.distanceZ = originalZ;
-            cameraFollow.distanceZ = originalY;
+            cameraFollow.distanceY = originalY;
+            cameraFollow.distanceX = originalX;
 
             // Crie uma nova instância de Quaternion com os valores de rotação desejados
             Quaternion newRotationQuaternion = Quaternion.Euler(originalRotation);
