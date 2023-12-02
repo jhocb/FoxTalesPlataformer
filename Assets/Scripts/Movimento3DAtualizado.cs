@@ -34,6 +34,10 @@ public class Movimento3DAtualizado : MonoBehaviour
     //Animacoes
     public Animator anim;
 
+    //Audios
+    public AudioManager audioM;
+    public int playerArea;
+
     //VFX
     //public GameObject trailVFX;
     // Escalada
@@ -46,6 +50,8 @@ public class Movimento3DAtualizado : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         boxDash = GameObject.Find("TriggerDash");
+        audioM = gameObject.GetComponent<AudioManager>();
+        playerArea = 1;
     }
 
     private void Update()
@@ -107,7 +113,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             Vector3 dashDirection = transform.forward; // Dire��o para a qual o personagem est� olhando
             StartCoroutine(Dash(dashDirection * dashSpeed));
             boxDash.SetActive(true);
-            //trailVFX.SetActive(true);
+            audioM.playDashH();
         }
         // Dash para cima com um bot�o separado
         if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
@@ -115,7 +121,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
             boxDash.SetActive(true);
-            //trailVFX.SetActive(true);
+            audioM.playDashV();
         }
         /*if (moveDirection != Vector3.zero)
         {
@@ -185,6 +191,33 @@ public class Movimento3DAtualizado : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Area1")
+        {
+            playerArea = 1;
+            audioM.UpdateMusic();
+
+        }
+        else if(other.name == "Area2")
+        {
+            playerArea = 2;
+            audioM.UpdateMusic();
+
+        }
+        else if (other.name == "Area3")
+        {
+            playerArea = 3;
+            audioM.UpdateMusic();
+
+        }
+        else if (other.name == "Area4")
+        {
+            playerArea = 4;
+            audioM.UpdateMusic();
+
+        }
+    }
     /*private IEnumerator Climb(Vector3 climbPoint, Vector3 wallNormal)
     {
         float startTime = Time.time;
