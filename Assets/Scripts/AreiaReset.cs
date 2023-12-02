@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class AreiaReset : MonoBehaviour
 {
+    public GameObject areia;
+
     public Vector3 originalPos;
     // Start is called before the first frame update
     void Start()
     {
-        originalPos = gameObject.transform.position;
+        originalPos = areia.transform.position;
     }
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("CUBO"))
         {
-            gameObject.transform.position = originalPos;
+            areia.transform.position = originalPos;
         }
     }
 
@@ -23,7 +25,7 @@ public class AreiaReset : MonoBehaviour
     {
         if (other.CompareTag("CUBO"))
         {
-            gameObject.transform.position = originalPos;
+            areia.transform.position = originalPos;
         }
     }
 }
