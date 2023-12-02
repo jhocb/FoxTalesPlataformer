@@ -31096,6 +31096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cf9d43ff266a44aaaa789074cf414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areia: {fileID: 0}
   originalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1142159212
 GameObject:
@@ -33127,7 +33128,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224702099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2744751, y: -14.89, z: -1.4810266}
+  m_LocalPosition: {x: -1.2744751, y: -20.72, z: -1.4810266}
   m_LocalScale: {x: 6.9807863, y: 6.9807863, z: 6.9807863}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33146,7 +33147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b3179e62ebe6746ac01a9098f475b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -0.5
+  speed: -0.55
 --- !u!23 &1224702103
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -33157,17 +33158,17 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_MotionVectors: 2
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: abc86c163eacde04b8913dfb67a92759, type: 2}
+  - {fileID: 2100000, guid: f602390e920cdd9458a12d9d076bddad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33209,7 +33210,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 9.999999, y: 2.2204459e-16, z: 9.999999}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.2, z: 0}
 --- !u!114 &1224702106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33222,6 +33223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cf9d43ff266a44aaaa789074cf414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areia: {fileID: 1224702099}
   originalPos: {x: 0, y: 0, z: 0}
 --- !u!1001 &1239915024
 PrefabInstance:
@@ -34959,7 +34961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1320622984
 Transform:
   m_ObjectHideFlags: 0
@@ -46124,6 +46126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a87cf9d43ff266a44aaaa789074cf414, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areia: {fileID: 1224702099}
   originalPos: {x: 0, y: 0, z: 0}
 --- !u!1 &1753837732
 GameObject:
