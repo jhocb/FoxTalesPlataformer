@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    renderPassEvent: 500
-    blurMaterial: {fileID: 0}
-    blurPasses: 1
-    downsample: 1
+    renderPassEvent: 450
+    blurMaterial: {fileID: 2100000, guid: a00afda211f274f6ca6cce958e4e13a5, type: 2}
+    blurPasses: 5
+    downsample: 2
     copyToFramebuffer: 0
     targetName: _blurTexture
 --- !u!114 &-2938715671725660207
@@ -54,7 +54,8 @@ MonoBehaviour:
   - {fileID: -2938715671725660207}
   - {fileID: 777067664189560020}
   - {fileID: -7048374504549796472}
-  m_RendererFeatureMap: d414766aecb2c80a88b56364bb242f9ea12fb0debf8637bf
+  - {fileID: 8247567485932053945}
+  m_RendererFeatureMap: d414766aecb2c80a88b56364bb242f9ea12fb0debf8637bfb9a50a54ee3e7572
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -77,7 +78,7 @@ MonoBehaviour:
   m_AssetVersion: 2
   m_OpaqueLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_TransparentLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -109,3 +110,23 @@ MonoBehaviour:
   m_Name: ButoVolumetricLightingAndFog
   m_EditorClassIdentifier: 
   m_Active: 1
+--- !u!114 &8247567485932053945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e2e32e102e44abeb72209e7ce030c3, type: 3}
+  m_Name: KawaseBlur
+  m_EditorClassIdentifier: 
+  m_Active: 0
+  settings:
+    renderPassEvent: 450
+    blurMaterial: {fileID: 2100000, guid: a00afda211f274f6ca6cce958e4e13a5, type: 2}
+    blurPasses: 5
+    downsample: 2
+    copyToFramebuffer: 0
+    targetName: _blurTexture
