@@ -116,7 +116,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             audioM.playDashH();
         }
         // Dash para cima com um bot�o separado
-        if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
+        if (Input.GetKeyDown(KeyCode.K) && !isDashingUp && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));
