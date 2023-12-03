@@ -47,5 +47,5 @@ MonoBehaviour:
   objetoPrefab: {fileID: 6819028528734214390, guid: d8aa24bdd5207074d91c6d2746295f8b,
     type: 3}
   tamanhoDaZona: {x: 20, y: 0, z: 5}
-  tempoEntreSpawns: 15
-  velocidadeMovimento: 10
+  tempoEntreSpawns: 30
+  velocidadeMovimento: 30
