@@ -9627,6 +9627,7 @@ GameObject:
   - component: {fileID: 3500909882272125208}
   - component: {fileID: 7569952272421426212}
   - component: {fileID: 3399080572306893249}
+  - component: {fileID: 5147676435710183105}
   m_Layer: 10
   m_Name: PlayerMesh
   m_TagString: CUBO
@@ -9785,6 +9786,8 @@ MonoBehaviour:
   upwardDashSpeed: 10
   upwardDashDuration: 0.5
   anim: {fileID: 0}
+  audioM: {fileID: 0}
+  playerArea: 0
 --- !u!114 &3500909882272125208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9831,6 +9834,19 @@ MonoBehaviour:
   valueDecrease: 0.1
   lightPlayer: {fileID: 5524949926895539209}
   checkPoint: {fileID: 0}
+--- !u!114 &5147676435710183105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6646622005743547550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984d555bffdfcb447afcd6ba5ce661c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
 --- !u!1 &6676276358659710876
 GameObject:
   m_ObjectHideFlags: 0
