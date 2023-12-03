@@ -107,7 +107,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             anim.SetBool("isGrounded", false);
         }
         // Dash lateral com um bot�o separado
-        if (Input.GetKeyDown(KeyCode.J) && !isDashing && !hasUsedUpwardDash)
+        if (Input.GetKeyDown(KeyCode.K) && !isDashing && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashSide");
             Vector3 dashDirection = transform.forward; // Dire��o para a qual o personagem est� olhando
@@ -116,7 +116,7 @@ public class Movimento3DAtualizado : MonoBehaviour
             audioM.playDashH();
         }
         // Dash para cima com um bot�o separado
-        if (Input.GetKeyDown(KeyCode.K) && !isDashingUp && !hasUsedUpwardDash)
+        if (Input.GetKeyDown(KeyCode.L) && !isDashingUp && !hasUsedUpwardDash)
         {
             anim.SetTrigger("DashUp");
             StartCoroutine(UpwardDash(Vector3.up * upwardDashSpeed));

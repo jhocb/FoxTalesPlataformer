@@ -45,7 +45,7 @@ public class PauseMenu : MonoBehaviour
         audioEmpty.SetActive(false);
 
         activeMenu.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1.5f;
         GameIsPaused = false;
         Debug.Log("Resumed");
     }
@@ -101,7 +101,7 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-    public void audio()
+    public void Audio()
     {
         //menuSelect.Play();
         settingsEmpty.SetActive(false);
